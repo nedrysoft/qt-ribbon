@@ -48,13 +48,13 @@ Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
 
     updateMargins();
 
-    setMinimumWidth(m_fontMetrics.maxWidth());
+    setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 }
 
 void Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     auto widgetRect = rect();
-    auto  currentTheme = Nedrysoft::Ribbon::Light;
+    auto currentTheme = Nedrysoft::Ribbon::Light;
 
     if (Nedrysoft::Utils::ThemeSupport::isDarkMode()) {
         currentTheme = Nedrysoft::Ribbon::Dark;
@@ -100,6 +100,8 @@ void Nedrysoft::Ribbon::RibbonGroup::setGroupName(const QString &groupName) {
 
 void Nedrysoft::Ribbon::RibbonGroup::updateMargins() {
     m_textRect = m_fontMetrics.boundingRect(m_groupName);
+
+    setMinimumWidth(m_textRect.width()+(RibbonGroupHorizontalMargins*2));
 
     setContentsMargins(RibbonGroupHorizontalMargins, 0, RibbonGroupHorizontalMargins, m_textRect.height());
 
