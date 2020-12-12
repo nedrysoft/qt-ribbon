@@ -39,6 +39,8 @@ set(NEDRYSOFT_LIBRARY_RIBBON_EXPORT)
 project(Ribbon)
 
 set(library_SOURCES
+    RibbonButton.cpp
+    RibbonButton.h
     RibbonCheckBox.cpp
     RibbonCheckBox.h
     RibbonComboBox.cpp
@@ -101,6 +103,8 @@ if(NEDRYSOFT_RIBBON_BUILD_DESIGNER_PLUGIN)
 
     add_library(${PROJECT_NAME} SHARED
         ${library_SOURCES}
+        RibbonButtonPlugin.cpp
+        RibbonButtonPlugin.h
         RibbonCheckBoxPlugin.cpp
         RibbonCheckBoxPlugin.h
         RibbonComboBoxPlugin.cpp
