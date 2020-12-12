@@ -39,7 +39,7 @@ constexpr auto ThemeStylesheet = R"(
     }
 
     QPushButton::hover {
-        background: [background-colour];
+        background: [hover-colour];
     }
 )";
 
@@ -72,29 +72,15 @@ void Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) {
 
     if (isDarkMode) {
         styleSheet.replace("[normal-background-colour]", "#434343");
-        //styleSheet.replace("[border-colour]", "none");
     } else {
         styleSheet.replace("[normal-background-colour]", "#ffffff");
-        //styleSheet.replace("[border-colour]", "#B9B9B9");
     }
 
-    //m_mainButton->setStyleSheet(styleSheet);
-    //m_buttonLabel->setStyleSheet(styleSheet);
+    if (isDarkMode) {
+        styleSheet.replace("[hover-colour]", "#4C4C4C");
+    } else {
+        styleSheet.replace("[hover-colour]", "#ffffff");
+    }
 
     setStyleSheet(styleSheet);
 }
-/*
-bool Nedrysoft::Ribbon::RibbonButton::eventFilter(QObject *object, QEvent *event) {
-    if (event->type()==QEvent::MouseButtonPress) {
-        QString styleSheet(ThemeStylesheet);
-
-        styleSheet.replace("[background-colour]", "#292929");
-
-        m_mainButton->setStyleSheet(styleSheet);
-    } else if (event->type()==QEvent::MouseButtonRelease) {
-        updateStyleSheets(m_themeSupport->isDarkMode());
-    }
-
-    return false;
-}
-*/
