@@ -40,6 +40,10 @@ Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
     m_font = QFont(fontManager->normalFont(), RibbonGroupDefaultFontSize);
     m_fontMetrics = QFontMetrics(m_font);
 
+    // set the stylesheet font, this then propogates down to all children of the group.
+
+    this->setStyleSheet(QString("font: %1pt \"%2\"").arg(m_font.pointSize()).arg(m_font.family()));
+
     setGroupName(QString("Group"));
 
     connect(qobject_cast<QApplication *>(QCoreApplication::instance()), &QApplication::paletteChanged, [=] (const QPalette &) {
