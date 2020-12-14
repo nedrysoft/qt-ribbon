@@ -45,8 +45,11 @@ namespace Nedrysoft::Utils {
             /**
              * @brief       Constructs a new ThemeSupport instance.
              */
+#if defined(Q_OS_MACOS)
             explicit ThemeSupport();
-
+#else
+            explicit ThemeSupport() = default;
+#endif
             /**
              * @brief       Returns the current OS theme mode.
              *
@@ -74,8 +77,13 @@ namespace Nedrysoft::Utils {
              *
              * @returns     the colour.
              */
+#if defined(Q_OS_MACOS)
             static QColor getColor(const QRgb PushButtonColor[]);
-
+#else
+        static QColor getColor(const QRgb PushButtonColor[]) {
+            return QColor();
+        }
+#endif
             /**
              * @brief       Returns the highlighted text background color
              *
@@ -84,7 +92,14 @@ namespace Nedrysoft::Utils {
              *
              * @returns     the colour
              */
+#if defined(Q_OS_MACOS)
             static QColor getHighlightedBackground();
+#else
+            static QColor getHighlightedBackground() {
+                return QColor();
+            }
+#endif
+
     };
 }
 

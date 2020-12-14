@@ -32,7 +32,7 @@ set(CMAKE_AUTORCC ON)
 
 ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 
-set(NEDRYSOFT_LIBRARY_RIBBON_EXPORT)
+ADD_DEFINITIONS(-DNEDRYSOFT_LIBRARY_RIBBON_EXPORT)
 
 # create the ribbon library
 
@@ -68,8 +68,11 @@ set(library_SOURCES
     RibbonWidget.cpp
     RibbonWidget.h
     ThemeSupport.h
-    ThemeSupport.mm
 )
+
+if(APPLE)
+    list(APPEND library_SOURCES ThemeSupport.mm)
+endif()
 
 add_library(${PROJECT_NAME} SHARED
     ${library_SOURCES}
@@ -77,9 +80,11 @@ add_library(${PROJECT_NAME} SHARED
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")
+if(APPLE)
+    target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")
 
-target_link_libraries(${PROJECT_NAME} -lstdc++ -lobjc)
+    target_link_libraries(${PROJECT_NAME} -lstdc++ -lobjc)
+endif()
 
 target_link_libraries(${PROJECT_NAME} "Qt5::Widgets")
 

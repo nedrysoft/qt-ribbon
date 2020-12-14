@@ -24,8 +24,10 @@
 #include <QApplication>
 #include <QStyle>
 
+#if defined(Q_OS_MACOS)
 #import <AppKit/NSAppearance.h>
 #import <AppKit/NSColor.h>
+#endif
 
 Nedrysoft::Utils::ThemeSupport::ThemeSupport() {
     connect(qobject_cast<QApplication *>(QCoreApplication::instance()), &QApplication::paletteChanged, [=] (const QPalette &) {
