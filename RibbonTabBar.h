@@ -64,7 +64,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @returns     the size hint for the tab at position index.
              */
-            [[nodiscard]] QSize tabSizeHint(int index) const override;
+            QSize tabSizeHint(int index) const override;
 
             /**
              * @brief       Reimplements: QObject::eventFilter(QObject *watched, QEvent *event).

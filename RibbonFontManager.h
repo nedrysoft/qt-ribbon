@@ -72,14 +72,14 @@ namespace Nedrysoft::Ribbon {
              *
              * @returns     the normal font family name
              */
-            [[nodiscard]] QString normalFont() const;
+            QString normalFont() const;
 
             /**
              * @brief       Returns the bold font name
              *
              * @returns     the bold font family name
              */
-            [[nodiscard]] QString boldFont() const;
+            QString boldFont() const;
 
         private:
             int m_regularFontId;                                                //! Regular font id after loading
