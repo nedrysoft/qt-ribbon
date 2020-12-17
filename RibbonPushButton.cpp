@@ -143,6 +143,8 @@ bool Nedrysoft::Ribbon::RibbonPushButton::eventFilter(QObject *object, QEvent *e
 
         styleSheet.replace("[background-colour]", "#292929");
 
+        //TODO: light mode
+
         m_mainButton->setStyleSheet(styleSheet);
     } else if (event->type()==QEvent::MouseButtonRelease) {
         updateStyleSheets(m_themeSupport->isDarkMode());

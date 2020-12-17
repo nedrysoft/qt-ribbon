@@ -41,6 +41,10 @@ constexpr auto ThemeStylesheet = R"(
     QPushButton::hover {
         background: [hover-colour];
     }
+
+    QPushButton::pressed {
+        background: [pressed-colour];
+    }
 )";
 
 Nedrysoft::Ribbon::RibbonButton::RibbonButton(QWidget *parent) :
@@ -80,6 +84,12 @@ void Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) {
         styleSheet.replace("[hover-colour]", "#4C4C4C");
     } else {
         styleSheet.replace("[hover-colour]", "#ffffff");
+    }
+
+    if (isDarkMode) {
+        styleSheet.replace("[pressed-colour]", "#292929");
+    } else {
+        styleSheet.replace("[pressed-colour]", "#808080");
     }
 
     setStyleSheet(styleSheet);
