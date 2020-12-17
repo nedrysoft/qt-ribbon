@@ -26,6 +26,7 @@
 #include "ThemeSupport.h"
 
 #include <QLineEdit>
+#include <QTextEdit>
 
 namespace Nedrysoft::Ribbon {
     /**
@@ -34,7 +35,7 @@ namespace Nedrysoft::Ribbon {
      * @details     A LineEdit widget that is styled to match the RibbonBar.
      */
     class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonLineEdit :
-            public QLineEdit {
+            public QTextEdit {
 
         private:
             Q_OBJECT

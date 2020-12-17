@@ -25,23 +25,26 @@
 #include "ThemeSupport.h"
 
 #include <QApplication>
+#include <QFontMetrics>
+#include <QPainter>
+#include <QPicture>
 #include <QSpacerItem>
+#include <QDebug>
 
 constexpr auto ThemeStylesheet = R"(
-    QLineEdit {
+    QTextEdit {
         background-color: [background-colour];
         height: 13px;
         border: 1px solid [border-colour];
-        padding: 2px;
     }
 
-    QLineEdit:focus {
+    QTextEdit:focus {
         border-color: [border-colour];
     }
 )";
 
 Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
-        QLineEdit(parent),
+        QTextEdit(parent),
         m_themeSupport(new Nedrysoft::Utils::ThemeSupport) {
 
     setAttribute(Qt::WA_MacShowFocusRect,false);
@@ -51,6 +54,10 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     });
 
     updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
+
+    setLineWrapMode(QTextEdit::NoWrap);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
