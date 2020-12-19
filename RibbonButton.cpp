@@ -26,7 +26,6 @@
 #include "ThemeSupport.h"
 
 #include <QApplication>
-#include <QSpacerItem>
 #include <QStyle>
 
 #include <QDebug>
