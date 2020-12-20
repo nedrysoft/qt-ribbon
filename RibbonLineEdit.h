@@ -54,8 +54,12 @@ namespace Nedrysoft::Ribbon {
             ~RibbonLineEdit() override;
 
         protected:
+            /**
+             * @brief       Reimplements QWidget::resizeEvent(QResizeEvent *event)
+             *
+             * @param[in]   event the resize event.
+             */
             void resizeEvent(QResizeEvent *event) override;
-
 
         private:
             /**
