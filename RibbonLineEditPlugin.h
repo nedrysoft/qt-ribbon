@@ -1,9 +1,11 @@
 /*
  * Copyright (C) 2020 Adrian Carpenter
  *
- * https://github.com/fizzyade
+ * This file is part of the Nedrysoft Ribbon Bar. (https://github.com/fizzyade/qt-ribbon)
  *
- * Created by Adrian Carpenter on 12/11/2020.
+ * A cross-platform ribbon bar for Qt applications.
+ *
+ * Created by Adrian Carpenter on 02/12/2020.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
