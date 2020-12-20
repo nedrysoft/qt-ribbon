@@ -83,7 +83,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 if(APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")
 
-    target_link_libraries(${PROJECT_NAME} -lstdc++ -lobjc)
+    target_link_libraries(${PROJECT_NAME} stdc++ objc)
 endif()
 
 target_link_libraries(${PROJECT_NAME} "Qt5::Widgets")
