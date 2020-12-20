@@ -30,8 +30,8 @@
 constexpr auto ThemeStylesheet = R"(
     QComboBox {
         padding: 2px;
-        height: 13px;
-        border: 1px solid [border-colour];
+        border: 0px;
+        margin-right: 1px;
         background-color: [background-colour];
         selection-background-color: [selected-background-colour];
     }

@@ -80,9 +80,9 @@ void Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) {
     }
 
     if (isDarkMode) {
-        styleSheet.replace("[hover-colour]", "#4C4C4C");
+        styleSheet.replace("[hover-colour]", "#4c4c4c");
     } else {
-        styleSheet.replace("[hover-colour]", "#ffffff");
+        styleSheet.replace("[hover-colour]", "#dddddd");
     }
 
     if (isDarkMode) {

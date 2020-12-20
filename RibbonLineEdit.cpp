@@ -35,7 +35,8 @@ constexpr auto ThemeStylesheet = R"(
     QTextEdit {
         background-color: [background-colour];
         height: 13px;
-        border: 1px solid [border-colour];
+        border: 0px solid [border-colour];
+        padding: 0px;
     }
 
     QTextEdit:focus {
@@ -51,6 +52,10 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
 
     connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
+    });
+
+    connect(this, &Nedrysoft::Ribbon::RibbonLineEdit::textChanged, [=]() {
+        resizeEvent(nullptr);
     });
 
     updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
@@ -76,3 +81,16 @@ void Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) {
 
     setStyleSheet(styleSheet);
 }
+
+void Nedrysoft::Ribbon::RibbonLineEdit::resizeEvent(QResizeEvent *event) {
+    QFontMetrics fontMetrics(font());
+
+    auto text = toPlainText().isEmpty()?placeholderText():toPlainText();
+    auto offset = (rect().height()-fontMetrics.boundingRect(text).height())/2;
+
+    if (offset!=document()->documentMargin()) {
+        document()->setDocumentMargin(offset);
+    }
+}
+
+

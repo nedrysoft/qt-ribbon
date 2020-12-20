@@ -53,6 +53,10 @@ namespace Nedrysoft::Ribbon {
              */
             ~RibbonLineEdit() override;
 
+        protected:
+            void resizeEvent(QResizeEvent *event) override;
+
+
         private:
             /**
              * @brief       Updates the stylesheet when the operating system theme is changed.

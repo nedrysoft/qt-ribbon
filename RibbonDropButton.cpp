@@ -31,10 +31,15 @@ constexpr auto ThemeStylesheet = R"(
     QPushButton {
         border: 0px;
         padding: 3px;
+        background: [normal-background-colour];
     }
 
     QPushButton::hover {
-        background: [background-colour];
+        background: [hover-colour];
+    }
+
+    QPushButton::pressed {
+        background: [pressed-colour];
     }
 )";
 
@@ -119,7 +124,23 @@ void Nedrysoft::Ribbon::RibbonDropButton::updateSizes() {
 void Nedrysoft::Ribbon::RibbonDropButton::updateStyleSheets(bool isDarkMode) {
     QString styleSheet(ThemeStylesheet);
 
-    styleSheet.replace("[background-colour]", Nedrysoft::Utils::ThemeSupport::getColor(Nedrysoft::Ribbon::PushButtonColor).name());
+    if (isDarkMode) {
+        styleSheet.replace("[normal-background-colour]", palette().color(QPalette::Window).name());
+    } else {
+        styleSheet.replace("[normal-background-colour]", "#ffffff");
+    }
+
+    if (isDarkMode) {
+        styleSheet.replace("[hover-colour]", "#4C4C4C");
+    } else {
+        styleSheet.replace("[hover-colour]", "#DDDDDD");
+    }
+
+    if (isDarkMode) {
+        styleSheet.replace("[pressed-colour]", "#292929");
+    } else {
+        styleSheet.replace("[pressed-colour]", "#808080");
+    }
 
     m_mainButton->setStyleSheet(styleSheet);
     m_dropButton->setStyleSheet(styleSheet);
@@ -129,18 +150,4 @@ void Nedrysoft::Ribbon::RibbonDropButton::updateStyleSheets(bool isDarkMode) {
     } else {
         m_dropButton->setIcon(QIcon(":/Nedrysoft/Ribbon/icons/arrow-drop-light@2x.png"));
     }
-}
-
-bool Nedrysoft::Ribbon::RibbonDropButton::eventFilter(QObject *object, QEvent *event) {
-    if (event->type()==QEvent::MouseButtonPress) {
-        QString styleSheet(ThemeStylesheet);
-
-        styleSheet.replace("[background-colour]", "#292929");
-
-        m_mainButton->setStyleSheet(styleSheet);
-    } else if (event->type()==QEvent::MouseButtonRelease) {
-        updateStyleSheets(m_themeSupport->isDarkMode());
-    }
-
-    return false;
 }

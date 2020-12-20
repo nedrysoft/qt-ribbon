@@ -113,15 +113,6 @@ namespace Nedrysoft::Ribbon {
              */
             Q_SIGNAL void clicked(bool dropdown);
 
-        protected:
-            /**
-             * @brief       Reimplements: QWidget::eventFilter(QObject *object, QEvent *event).
-             *
-             * @param[in]   object the target object for the event.
-             * @param[in]   event the event information.
-             */
-            bool eventFilter(QObject *object, QEvent *event) override;
-
         private:
             QVBoxLayout *m_layout;                              //! the layout for this widget
             QPushButton *m_mainButton;                          //! the main button

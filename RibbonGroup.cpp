@@ -68,8 +68,6 @@ void Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) {
 
     painter.save();
 
-    painter.setClipRect(event->rect());
-
     painter.setFont(m_font);
 
     painter.setPen(Ribbon::TextColor[currentTheme]);
@@ -79,6 +77,8 @@ void Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) {
     textRect.setBottom(rect().bottom());
 
     painter.drawText(textRect, m_groupName, Qt::AlignBottom | Qt::AlignHCenter);
+
+    painter.setClipRect(event->rect());
 
     painter.setPen(Ribbon::GroupDividerColor[currentTheme]);
 
