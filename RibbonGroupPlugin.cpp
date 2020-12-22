@@ -52,8 +52,8 @@ RibbonGroupPlugin::RibbonGroupPlugin(QObject *parent) :
 
 }
 
-void RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -62,43 +62,44 @@ void RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonGroupPlugin::isInitialized() const {
+auto RibbonGroupPlugin::isInitialized() -> bool const {
     return m_initialized;
 }
 
-QWidget *RibbonGroupPlugin::createWidget(QWidget *parent) {
+auto RibbonGroupPlugin::createWidget(QWidget *parent) -> QWidget  {
     return new Nedrysoft::Ribbon::RibbonGroup(parent);
 }
 
-QString RibbonGroupPlugin::name() const {
+auto RibbonGroupPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonGroup");
 }
 
-QString RibbonGroupPlugin::group() const {
+auto RibbonGroupPlugin::group() -> QString  const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonGroupPlugin::icon() const {
+auto RibbonGroupPlugin::icon() -> QIcon  const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonGroupPlugin::toolTip() const {
+auto RibbonGroupPlugin::toolTip() -> QString  const {
     return tr("A Ribbon Group");
 }
 
-QString RibbonGroupPlugin::whatsThis() const {
+auto RibbonGroupPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Group is a container that contains a set of controls that are logically grouped together.");
 }
 
-bool RibbonGroupPlugin::isContainer() const {
+auto RibbonGroupPlugin::isContainer() -> bool const {
     return true;
 }
 
-QString RibbonGroupPlugin::domXml() const {
-    return QString(ConfigurationXML).replace("[default-width]", QString::number(Nedrysoft::Ribbon::RibbonBarDefaultWidth))
-                                    .replace("[default-height]", QString::number(Nedrysoft::Ribbon::RibbonBarHeight));
+auto RibbonGroupPlugin::domXml() -> QString const {
+    return QString(ConfigurationXML)
+            .replace("[default-width]", QString::number(Nedrysoft::Ribbon::RibbonBarDefaultWidth))
+            .replace("[default-height]", QString::number(Nedrysoft::Ribbon::RibbonBarHeight));
 }
 
-QString RibbonGroupPlugin::includeFile() const {
+auto RibbonGroupPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonGroup.h");
 }

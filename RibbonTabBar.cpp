@@ -60,7 +60,7 @@ Nedrysoft::Ribbon::RibbonTabBar::RibbonTabBar(QWidget *parent) :
 #endif
 }
 
-bool Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *event) {
+auto Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *event) -> bool {
     Q_UNUSED(watched)
 
     static auto lastTabIndex = -1;
@@ -108,7 +108,7 @@ bool Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *even
     return false;
 }
 
-QSize Nedrysoft::Ribbon::RibbonTabBar::tabSizeHint(int index) const {
+auto Nedrysoft::Ribbon::RibbonTabBar::tabSizeHint(int index) -> QSize const {
     auto size = QTabBar::tabSizeHint(index);
 
     size.setHeight(Ribbon::TabBarHeight);
@@ -116,13 +116,13 @@ QSize Nedrysoft::Ribbon::RibbonTabBar::tabSizeHint(int index) const {
     return size;
 }
 
-void Nedrysoft::Ribbon::RibbonTabBar::paintEvent(QPaintEvent *event) {
+auto Nedrysoft::Ribbon::RibbonTabBar::paintEvent(QPaintEvent *event) -> void {
     Q_UNUSED(event)
     auto globalCursorPos = QCursor::pos();
     auto textRect = QRect();
     auto cursorPos = mapFromGlobal(globalCursorPos);
     auto hoveredTab = tabAt(cursorPos);
-    auto backgroundColor = QColor();
+    QColor backgroundColor;
     QPainter painter(this);
     auto  currentTheme = Ribbon::Light;
 
@@ -177,7 +177,9 @@ void Nedrysoft::Ribbon::RibbonTabBar::paintEvent(QPaintEvent *event) {
     painter.restore();
 }
 
-void Nedrysoft::Ribbon::RibbonTabBar::updateStyleSheet(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonTabBar::updateStyleSheet(bool isDarkMode) -> void {
+    Q_UNUSED(isDarkMode)
+
     QString styleSheet(ThemeStylesheet);
 
     setStyleSheet(styleSheet);

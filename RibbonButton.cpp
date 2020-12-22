@@ -70,7 +70,7 @@ Nedrysoft::Ribbon::RibbonButton::RibbonButton(QWidget *parent) :
 Nedrysoft::Ribbon::RibbonButton::~RibbonButton() {
 }
 
-void Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
     styleSheet.replace("[background-colour]", Nedrysoft::Utils::ThemeSupport::getColor(Nedrysoft::Ribbon::PushButtonColor).name());

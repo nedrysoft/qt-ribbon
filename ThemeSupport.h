@@ -58,9 +58,9 @@ namespace Nedrysoft::Utils {
              * @returns     true if dark mode; otherwise false.
              */
 #if defined(Q_OS_MACOS)
-            static bool isDarkMode();
+            static auto isDarkMode() -> bool;
 #else
-            static bool isDarkMode() {
+            static auto isDarkMode() -> bool {
                 return false;
             }
 #endif
@@ -80,24 +80,24 @@ namespace Nedrysoft::Utils {
              * @returns     the colour.
              */
 #if defined(Q_OS_MACOS)
-            static QColor getColor(const QRgb PushButtonColor[]);
+            static auto getColor(const QRgb PushButtonColor[]) -> QColor;
 #else
-        static QColor getColor(const QRgb PushButtonColor[]) {
-            return QColor();
-        }
+            static auto getColor(const QRgb PushButtonColor[]) -> QColor {
+                return QColor();
+            }
 #endif
             /**
              * @brief       Returns the highlighted text background color
              *
              * @note        Qt does not return the correct color when using QPalette, this function directly queries
-             *              the macOS to discover the real highlighed background color.
+             *              the macOS to discover the real highlighted background color.
              *
              * @returns     the colour
              */
 #if defined(Q_OS_MACOS)
-            static QColor getHighlightedBackground();
+            static auto getHighlightedBackground() -> QColor;
 #else
-            static QColor getHighlightedBackground() {
+            static auto getHighlightedBackground() -> QColor {
                 return QColor();
             }
 #endif

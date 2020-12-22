@@ -37,7 +37,7 @@ Nedrysoft::Utils::ThemeSupport::ThemeSupport() {
     });
 }
 
-bool Nedrysoft::Utils::ThemeSupport::isDarkMode() {
+auto Nedrysoft::Utils::ThemeSupport::isDarkMode() -> bool{
     NSAppearance *appearance = nullptr;
 
     if (@available(macOS 11, *)) {
@@ -61,11 +61,11 @@ bool Nedrysoft::Utils::ThemeSupport::isDarkMode() {
     }
 }
 
-QColor Nedrysoft::Utils::ThemeSupport::getColor(const QRgb colourPair[]) {
+auto Nedrysoft::Utils::ThemeSupport::getColor(const QRgb colourPair[]) -> QColor {
     return QColor(colourPair[isDarkMode() ? 1 : 0]);
 }
 
-QColor Nedrysoft::Utils::ThemeSupport::getHighlightedBackground() {
+auto Nedrysoft::Utils::ThemeSupport::getHighlightedBackground() -> QColor {
 #if defined(Q_OS_MACOS)
     CGColorRef a = [NSColor systemBlueColor].CGColor;
 

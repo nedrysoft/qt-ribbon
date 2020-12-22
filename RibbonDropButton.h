@@ -35,8 +35,8 @@ namespace Nedrysoft::Ribbon {
     constexpr auto RibbonDropButtonDefaultIconWidth = 32;
     constexpr auto RibbonDropButtonDefaultIconHeight = 48;
     constexpr auto RibbonDropButtonDefaultHeight = 16;
-    constexpr auto RubbonDropButtonArrowWidth = 5;
-    constexpr auto RubbonDropButtonArrowHeight = 5;
+    constexpr auto RibbonDropButtonArrowWidth = 5;
+    constexpr auto RibbonDropButtonArrowHeight = 5;
 
     /**
      * @brief       The RibbonDropButton widget provides a ribbon stylised push button with a drop down action.
@@ -71,41 +71,41 @@ namespace Nedrysoft::Ribbon {
              *
              * @returns     the icon assigned to the main button.
              */
-            QIcon icon();
+            auto icon() -> QIcon;
 
             /**
              * @brief       Sets the icon to be displayed on the main button.
              *
              * @param[in]   icon the icon to be displayed on the main button.
              */
-            void setIcon(QIcon &icon);
+            auto setIcon(QIcon &icon) -> void;
 
             /**
              * @brief       Returns the current size of the icon.
              *
              * @returns     the current size of the icon.
              */
-            QSize iconSize();
+            auto iconSize() -> QSize;
 
             /**
              * @brief       Sets the current size of the icon.
              *
              * @param[in]   iconSize the new size of the icon to be used.
              */
-            void setIconSize(QSize iconSize);
+            auto setIconSize(QSize iconSize) -> void;
 
         private:
             /**
              * @brief       Updates the child widgets when the size of the icon is changed.
              */
-            void updateSizes();
+            auto updateSizes() -> void;
 
             /**
               * @brief       Updates the child widgets stylesheets when the operating system theme is changed.
               *
               * @param[in]   isDarkMode true if dark mode; otherwise false.
               */
-            void updateStyleSheets(bool isDarkMode);
+            auto updateStyleSheets(bool isDarkMode) -> void;
 
         public:
             /**

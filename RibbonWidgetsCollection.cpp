@@ -47,6 +47,6 @@ RibbonWidgetsCollection::RibbonWidgetsCollection(QObject *parent) :
     m_widgets.append(new RibbonButtonPlugin(this));
 }
 
-QList<QDesignerCustomWidgetInterface*> RibbonWidgetsCollection::customWidgets() const {
+auto RibbonWidgetsCollection::customWidgets() -> QList<QDesignerCustomWidgetInterface*> const {
     return m_widgets;
 }

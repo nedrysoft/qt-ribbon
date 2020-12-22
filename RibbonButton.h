@@ -63,25 +63,11 @@ namespace Nedrysoft::Ribbon {
 
         private:
             /**
-             * @brief       Updates the child widgets when the size of the icon is changed.
-             */
-            void updateSizes();
-
-            /**
              * @brief       Updates the child widgets stylesheets when the operating system theme is changed.
              *
              * @param[in]   isDarkMode true if dark mode; otherwise false.
              */
-            void updateStyleSheets(bool isDarkMode);
-
-        protected:
-            /**
-             * @brief       Reimplements: QWidget::eventFilter(QObject *object, QEvent *event).
-             *
-             * @param[in]   object the target object for the event.
-             * @param[in]   event the event information.
-             */
-            //bool eventFilter(QObject *object, QEvent *event) override;
+            auto updateStyleSheets(bool isDarkMode) -> void;
 
         private:
             Nedrysoft::Utils::ThemeSupport *m_themeSupport;     //! an instance of theme support

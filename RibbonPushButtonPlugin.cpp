@@ -44,8 +44,8 @@ RibbonPushButtonPlugin::RibbonPushButtonPlugin(QObject *parent) :
 
 }
 
-void RibbonPushButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonPushButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -54,42 +54,42 @@ void RibbonPushButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonPushButtonPlugin::isInitialized() const {
+auto RibbonPushButtonPlugin::isInitialized() -> bool const {
     return m_initialized;
 }
 
-QWidget *RibbonPushButtonPlugin::createWidget(QWidget *parent) {
+auto RibbonPushButtonPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonPushButton(parent);
 }
 
-QString RibbonPushButtonPlugin::name() const {
+auto RibbonPushButtonPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonPushButton");
 }
 
-QString RibbonPushButtonPlugin::group() const {
+auto RibbonPushButtonPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonPushButtonPlugin::icon() const {
+auto RibbonPushButtonPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonPushButtonPlugin::toolTip() const {
+void RibbonPushButtonPlugin::toolTip() -> QString const {
     return tr("A Ribbon Push Button");
 }
 
-QString RibbonPushButtonPlugin::whatsThis() const {
+auto RibbonPushButtonPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Push Button is a control that provides a main push button with optional text and is styled to match the Ribbon.");
 }
 
-bool RibbonPushButtonPlugin::isContainer() const {
+auto RibbonPushButtonPlugin::isContainer() -> bool const {
     return true;
 }
 
-QString RibbonPushButtonPlugin::domXml() const {
+auto RibbonPushButtonPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonPushButtonPlugin::includeFile() const {
+auto RibbonPushButtonPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonPushButton.h");
 }

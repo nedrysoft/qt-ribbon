@@ -96,41 +96,43 @@ Nedrysoft::Ribbon::RibbonPushButton::~RibbonPushButton() {
     m_layout->deleteLater();
 }
 
-QIcon Nedrysoft::Ribbon::RibbonPushButton::icon() {
+auto Nedrysoft::Ribbon::RibbonPushButton::icon() -> QIcon {
     return m_mainButton->icon();
 }
 
-void Nedrysoft::Ribbon::RibbonPushButton::setIcon(QIcon &icon) {
+auto Nedrysoft::Ribbon::RibbonPushButton::setIcon(QIcon &icon) -> void {
     m_mainButton->setIcon(icon);
 }
 
-QSize Nedrysoft::Ribbon::RibbonPushButton::iconSize() {
+auto Nedrysoft::Ribbon::RibbonPushButton::iconSize() -> QSize {
     return m_iconSize;
 }
 
-void Nedrysoft::Ribbon::RibbonPushButton::setIconSize(QSize iconSize)
+auto Nedrysoft::Ribbon::RibbonPushButton::setIconSize(QSize iconSize) -> void
 {
     m_iconSize = iconSize;
 
     updateSizes();
 }
 
-QString Nedrysoft::Ribbon::RibbonPushButton::text() {
+auto Nedrysoft::Ribbon::RibbonPushButton::text() -> QString {
     return m_buttonLabel->text();
 }
 
-void Nedrysoft::Ribbon::RibbonPushButton::setText(QString text) {
+auto Nedrysoft::Ribbon::RibbonPushButton::setText(QString text) -> void {
     m_buttonLabel->setText(text);
 
     m_buttonLabel->setVisible(!m_buttonLabel->text().isEmpty());
 }
 
-void Nedrysoft::Ribbon::RibbonPushButton::updateSizes() {
+auto Nedrysoft::Ribbon::RibbonPushButton::updateSizes() -> void {
     m_mainButton->setMinimumSize(m_iconSize);
     m_mainButton->setIconSize(m_iconSize);
 }
 
-void Nedrysoft::Ribbon::RibbonPushButton::updateStyleSheets(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonPushButton::updateStyleSheets(bool isDarkMode) -> void {
+    Q_UNUSED(isDarkMode)
+
     QString styleSheet(ThemeStylesheet);
 
     styleSheet.replace("[background-colour]", Nedrysoft::Utils::ThemeSupport::getColor(Nedrysoft::Ribbon::PushButtonColor).name());
@@ -139,7 +141,7 @@ void Nedrysoft::Ribbon::RibbonPushButton::updateStyleSheets(bool isDarkMode) {
     m_buttonLabel->setStyleSheet(styleSheet);
 }
 
-bool Nedrysoft::Ribbon::RibbonPushButton::eventFilter(QObject *object, QEvent *event) {
+auto Nedrysoft::Ribbon::RibbonPushButton::eventFilter(QObject *object, QEvent *event) -> bool {
     if (event->type()==QEvent::MouseButtonPress) {
         QString styleSheet(ThemeStylesheet);
 

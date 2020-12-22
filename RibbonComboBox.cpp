@@ -69,7 +69,7 @@ Nedrysoft::Ribbon::RibbonComboBox::RibbonComboBox(QWidget *parent) :
 Nedrysoft::Ribbon::RibbonComboBox::~RibbonComboBox() {
 }
 
-void Nedrysoft::Ribbon::RibbonComboBox::updateStyleSheet(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonComboBox::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
     styleSheet.replace("[selected-background-colour]", Nedrysoft::Utils::ThemeSupport::getHighlightedBackground().name());

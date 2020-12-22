@@ -53,7 +53,7 @@ class RibbonWidgetsCollection :
          *
          * @returns     the list of widget interfaces this plugin exposes.
          */
-        [[nodiscard]] QList<QDesignerCustomWidgetInterface*> customWidgets() const override;
+        auto customWidgets() -> QList<QDesignerCustomWidgetInterface*> const override;
 
     private:
         QList<QDesignerCustomWidgetInterface*> m_widgets;           //! the list of provided widgets

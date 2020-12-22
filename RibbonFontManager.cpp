@@ -31,13 +31,13 @@ Nedrysoft::Ribbon::RibbonFontManager::RibbonFontManager() :
 
 }
 
-Nedrysoft::Ribbon::RibbonFontManager *Nedrysoft::Ribbon::RibbonFontManager::getInstance() {
+auto Nedrysoft::Ribbon::RibbonFontManager::getInstance() -> Nedrysoft::Ribbon::RibbonFontManager * {
     static auto instance = new RibbonFontManager();
 
     return instance;
 }
 
-QString Nedrysoft::Ribbon::RibbonFontManager::normalFont() const {
+auto Nedrysoft::Ribbon::RibbonFontManager::normalFont() -> QString const {
     auto families = QFontDatabase::applicationFontFamilies(m_regularFontId);
 
     if (families.count()) {
@@ -47,7 +47,7 @@ QString Nedrysoft::Ribbon::RibbonFontManager::normalFont() const {
     return QString();
 }
 
-QString Nedrysoft::Ribbon::RibbonFontManager::boldFont() const {
+auto Nedrysoft::Ribbon::RibbonFontManager::boldFont() -> QString const {
     auto families = QFontDatabase::applicationFontFamilies(m_boldFontId);
 
     if (families.count()) {

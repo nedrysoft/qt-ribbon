@@ -39,8 +39,8 @@ RibbonDropButtonPlugin::RibbonDropButtonPlugin(QObject *parent) :
 
 }
 
-void RibbonDropButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonDropButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -49,42 +49,42 @@ void RibbonDropButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonDropButtonPlugin::isInitialized() const {
+auto RibbonDropButtonPlugin::isInitialized() -> bool const {
     return m_initialized;
 }
 
-QWidget *RibbonDropButtonPlugin::createWidget(QWidget *parent) {
+auto RibbonDropButtonPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonDropButton(parent);
 }
 
-QString RibbonDropButtonPlugin::name() const {
+auto RibbonDropButtonPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonDropButton");
 }
 
-QString RibbonDropButtonPlugin::group() const {
+auto RibbonDropButtonPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonDropButtonPlugin::icon() const {
+auto RibbonDropButtonPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonDropButtonPlugin::toolTip() const {
+auto RibbonDropButtonPlugin::toolTip() -> QString const {
     return tr("A Ribbon Drop Button");
 }
 
-QString RibbonDropButtonPlugin::whatsThis() const {
+auto RibbonDropButtonPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Drop Button is button which contains a main action button and a drop down button for extended actions and is styled to match the Ribbon.");
 }
 
-bool RibbonDropButtonPlugin::isContainer() const {
+auto RibbonDropButtonPlugin::isContainer() -> bool const {
     return true;
 }
 
-QString RibbonDropButtonPlugin::domXml() const {
+auto RibbonDropButtonPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonDropButtonPlugin::includeFile() const {
+auto RibbonDropButtonPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonDropButton.h");
 }

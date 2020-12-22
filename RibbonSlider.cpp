@@ -65,7 +65,7 @@ Nedrysoft::Ribbon::RibbonSlider::RibbonSlider(QWidget *parent) :
 Nedrysoft::Ribbon::RibbonSlider::~RibbonSlider() {
 }
 
-void Nedrysoft::Ribbon::RibbonSlider::updateStyleSheet(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonSlider::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
     styleSheet.replace("[theme]", isDarkMode ? "dark" : "light");

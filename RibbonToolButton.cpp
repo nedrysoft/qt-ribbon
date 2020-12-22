@@ -59,16 +59,14 @@ Nedrysoft::Ribbon::RibbonToolButton::RibbonToolButton(QWidget *parent) :
 Nedrysoft::Ribbon::RibbonToolButton::~RibbonToolButton() {
 }
 
-void Nedrysoft::Ribbon::RibbonToolButton::updateStyleSheet(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonToolButton::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
     if (isDarkMode) {
         styleSheet.replace("[background-colour]", "#434343");
         styleSheet.replace("[hover-colour]", "#616161");
-        //styleSheet.replace("[border-colour]", "none");
     } else {
         styleSheet.replace("[background-colour]", "#ffffff");
-        //styleSheet.replace("[border-colour]", "#B9B9B9");
     }
 
     setStyleSheet(styleSheet);

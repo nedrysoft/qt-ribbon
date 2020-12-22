@@ -39,8 +39,8 @@ RibbonSliderPlugin::RibbonSliderPlugin(QObject *parent) :
 
 }
 
-void RibbonSliderPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonSliderPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -49,42 +49,42 @@ void RibbonSliderPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonSliderPlugin::isInitialized() const {
+auto RibbonSliderPlugin::isInitialized() -> bool const {
     return m_initialized;
 }
 
-QWidget *RibbonSliderPlugin::createWidget(QWidget *parent) {
+auto RibbonSliderPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonSlider(parent);
 }
 
-QString RibbonSliderPlugin::name() const {
+auto RibbonSliderPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonSlider");
 }
 
-QString RibbonSliderPlugin::group() const {
+auto RibbonSliderPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonSliderPlugin::icon() const {
+auto RibbonSliderPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonSliderPlugin::toolTip() const {
+auto RibbonSliderPlugin::toolTip() -> QString const {
     return QString();
 }
 
-QString RibbonSliderPlugin::whatsThis() const {
+auto RibbonSliderPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Line Edit is a QSlider subclass that is styled to match the Ribbon.");
 }
 
-bool RibbonSliderPlugin::isContainer() const {
+auto RibbonSliderPlugin::isContainer() -> bool const {
     return false;
 }
 
-QString RibbonSliderPlugin::domXml() const {
+auto RibbonSliderPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonSliderPlugin::includeFile() const {
+auto RibbonSliderPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonSlider.h");
 }

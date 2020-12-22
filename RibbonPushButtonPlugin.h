@@ -54,75 +54,75 @@ class RibbonPushButtonPlugin :
          *
          * @returns     true if it container; otherwise false.
          */
-        bool isContainer() const override;
+        auto isContainer() -> bool const override;
 
         /**
          * @brief       Returns true if the widget has been initialized; otherwise returns false.
          *
          * @returns     true if initialised; otherwise false.
          */
-        bool isInitialized() const override;
+        auto isInitialized() -> bool const override;
 
         /**
          * @brief       Returns the icon used to represent the custom widget in Qt Designer's widget box.
          *
          * @returns     the icon used to represent the custom widget in Qt Designer's widget box.
          */
-        QIcon icon() const override;
+        auto icon() -> QIcon const override;
 
         /**
          * @brief       Returns the XML that is used to describe the custom widget's properties to Qt Designer.
          *
          * @returns     the XML describing the widgets properties.
          */
-        QString domXml() const override;
+        auto domXml() -> QString const override;
 
         /**
          * @brief       Returns the name of the group to which the widget belongs.
          *
          * @returns     the name of the group.
          */
-        QString group() const override;
+        auto group() -> QString const override;
 
         /**
          * @brief       Returns the path to the include file that uic uses when creating code for the widget.
          *
          * @returns     the path to the include file.
          */
-        QString includeFile() const override;
+        auto includeFile() -> QString const override;
 
         /**
          * @brief       Returns the class name of the widget supplied by the interface.
          *
          * @returns     the name of the widget.
          */
-        QString name() const override;
+        auto name() -> QString const override;
 
         /**
          * @brief       Returns a short description of the widget that can be used by Qt Designer in a tool tip.
          *
          * @returns     the description.
          */
-        QString toolTip() const override;
+        auto toolTip() -> QString const override;
 
         /**
          * @brief       Returns a description of the widget that can be used by Qt Designer in "What's This?" help for the widget.
          *
          * @returns     the description.
          */
-        QString whatsThis() const override;
+        auto whatsThis() -> QString const override;
 
         /**
          * @brief       Returns a new instance of the RibbonPushButton class, with the given parent.
          *
          * @returns     the widget instance.
          */
-        QWidget *createWidget(QWidget *parent) override;
+        auto createWidget(QWidget *parent) -> QWidget * override;
 
         /**
          * @brief       Initializes the widget for use with the specified formEditor interface.
          */
-        void initialize(QDesignerFormEditorInterface *core) override;
+        auto initialize(QDesignerFormEditorInterface *core) -> QString override;
 
     private:
         bool m_initialized = false;                         //! holds whether designer has initialised the factory yet

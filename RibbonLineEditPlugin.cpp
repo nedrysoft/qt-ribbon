@@ -47,8 +47,8 @@ RibbonLineEditPlugin::RibbonLineEditPlugin(QObject *parent) :
 
 }
 
-void RibbonLineEditPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonLineEditPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -57,42 +57,42 @@ void RibbonLineEditPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonLineEditPlugin::isInitialized() const {
+auto RibbonLineEditPlugin::isInitialized() -> bool const {
     return m_initialized;
 }
 
-QWidget *RibbonLineEditPlugin::createWidget(QWidget *parent) {
+auto RibbonLineEditPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonLineEdit(parent);
 }
 
-QString RibbonLineEditPlugin::name() const {
+auto RibbonLineEditPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonLineEdit");
 }
 
-QString RibbonLineEditPlugin::group() const {
+auto RibbonLineEditPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonLineEditPlugin::icon() const {
+auto RibbonLineEditPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonLineEditPlugin::toolTip() const {
+auto RibbonLineEditPlugin::toolTip() -> QString const {
     return tr("A Ribbon Line Edit");
 }
 
-QString RibbonLineEditPlugin::whatsThis() const {
+auto RibbonLineEditPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Line Edit is a QLineEdit subclass that is styled to match the Ribbon.");
 }
 
-bool RibbonLineEditPlugin::isContainer() const {
+auto RibbonLineEditPlugin::isContainer() -> bool const {
     return false;
 }
 
-QString RibbonLineEditPlugin::domXml() const {
+auto RibbonLineEditPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonLineEditPlugin::includeFile() const {
+auto RibbonLineEditPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonLineEdit.h");
 }

@@ -47,8 +47,8 @@ RibbonComboBoxPlugin::RibbonComboBoxPlugin(QObject *parent) :
 
 }
 
-void RibbonComboBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonComboBoxPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -57,42 +57,42 @@ void RibbonComboBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonComboBoxPlugin::isInitialized() const {
+auto RibbonComboBoxPlugin::isInitialized() -> bool const {
     return m_initialized;
 }
 
-QWidget *RibbonComboBoxPlugin::createWidget(QWidget *parent) {
+auto RibbonComboBoxPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonComboBox(parent);
 }
 
-QString RibbonComboBoxPlugin::name() const {
+auto RibbonComboBoxPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonComboBox");
 }
 
-QString RibbonComboBoxPlugin::group() const {
+auto RibbonComboBoxPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonComboBoxPlugin::icon() const {
+auto RibbonComboBoxPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonComboBoxPlugin::toolTip() const {
+auto RibbonComboBoxPlugin::toolTip() -> QString const {
     return tr("A Ribbon Combo Box");
 }
 
-QString RibbonComboBoxPlugin::whatsThis() const {
+auto RibbonComboBoxPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Combo Box is a QComboBox subclass that is styled to match the Ribbon.");
 }
 
-bool RibbonComboBoxPlugin::isContainer() const {
+auto RibbonComboBoxPlugin::isContainer() -> bool const {
     return false;
 }
 
-QString RibbonComboBoxPlugin::domXml() const {
+auto RibbonComboBoxPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonComboBoxPlugin::includeFile() const {
+auto RibbonComboBoxPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonComboBox.h");
 }

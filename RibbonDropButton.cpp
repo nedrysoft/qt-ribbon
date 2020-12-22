@@ -69,7 +69,7 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
     m_mainButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     m_dropButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-    m_dropButton->setIconSize(QSize(RubbonDropButtonArrowWidth,RubbonDropButtonArrowHeight));
+    m_dropButton->setIconSize(QSize(RibbonDropButtonArrowWidth, RibbonDropButtonArrowHeight));
 
     m_dropButton->setFlat(true);
     m_mainButton->setFlat(true);

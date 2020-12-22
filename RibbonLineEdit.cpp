@@ -57,7 +57,10 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     });
 
     connect(this, &Nedrysoft::Ribbon::RibbonLineEdit::textChanged, [=]() {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "VirtualCallInCtorOrDtor"
         resizeEvent(nullptr);
+#pragma clang diagnostic pop
     });
 
     updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
@@ -67,10 +70,11 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
+
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
 }
 
-void Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
     if (isDarkMode) {
@@ -84,7 +88,7 @@ void Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) {
     setStyleSheet(styleSheet);
 }
 
-void Nedrysoft::Ribbon::RibbonLineEdit::resizeEvent(QResizeEvent *event) {
+auto Nedrysoft::Ribbon::RibbonLineEdit::resizeEvent(QResizeEvent *event) -> void {
     QFontMetrics fontMetrics(font());
 
     auto text = toPlainText().isEmpty()?placeholderText():toPlainText();

@@ -44,8 +44,8 @@ RibbonButtonPlugin::RibbonButtonPlugin(QObject *parent) :
 
 }
 
-void RibbonButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -54,42 +54,42 @@ void RibbonButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonButtonPlugin::isInitialized() const {
+bool RibbonButtonPlugin::isInitialized() -> void const {
     return m_initialized;
 }
 
-QWidget *RibbonButtonPlugin::createWidget(QWidget *parent) {
+auto RibbonButtonPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonButton(parent);
 }
 
-QString RibbonButtonPlugin::name() const {
+auto RibbonButtonPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonButton");
 }
 
-QString RibbonButtonPlugin::group() const {
+auto RibbonButtonPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonButtonPlugin::icon() const {
+auto RibbonButtonPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonButtonPlugin::toolTip() const {
+auto RibbonButtonPlugin::toolTip() -> QString const {
     return tr("A Ribbon Button");
 }
 
-QString RibbonButtonPlugin::whatsThis() const {
+auto RibbonButtonPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Button is a control that provides a push button and is styled to match the Ribbon.");
 }
 
-bool RibbonButtonPlugin::isContainer() const {
+auto RibbonButtonPlugin::isContainer() -> bool const {
     return true;
 }
 
-QString RibbonButtonPlugin::domXml() const {
+auto RibbonButtonPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonButtonPlugin::includeFile() const {
+auto RibbonButtonPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonButton.h");
 }

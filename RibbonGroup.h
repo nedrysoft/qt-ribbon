@@ -32,7 +32,6 @@
 
 namespace Nedrysoft::Ribbon {
     constexpr auto RibbonGroupHorizontalMargins = 12;
-
 #if defined(Q_OS_MACOS)
     constexpr int RibbonGroupDefaultFontSize = 10;
 #else
@@ -64,19 +63,19 @@ namespace Nedrysoft::Ribbon {
             /**
              * @brief       Destroys the RibbonGroup.
              */
-            QString groupName() const;
+            auto groupName() -> QString const;
 
             /**
              * @brief       Sets the displayed name of the group.
              *
              * @param[in]   name the name of the group which is displayed at the bottom of the group.
              */
-            void setGroupName(const QString &name);
+            auto setGroupName(const QString &name) -> void;
 
             /**
-             * @brief       Updates the margins to account for the group bordere.
+             * @brief       Updates the margins to account for the group border.
              */
-            void updateMargins();
+            auto updateMargins() -> void;
 
         protected:
             /**
@@ -84,7 +83,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   event the event information.
              */
-            virtual void paintEvent(QPaintEvent *event) override;
+            virtual auto paintEvent(QPaintEvent *event) -> void override;
 
         private:
             QString m_groupName;                                    //! Group name that is displayed

@@ -45,8 +45,8 @@ RibbonCheckBoxPlugin::RibbonCheckBoxPlugin(QObject *parent) :
 
 }
 
-void RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
-    Q_UNUSED(core);
+auto RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+    Q_UNUSED(core)
 
     if (m_initialized) {
         return;
@@ -55,42 +55,42 @@ void RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonCheckBoxPlugin::isInitialized() const {
+auto RibbonCheckBoxPlugin::isInitialized() -> const {
     return m_initialized;
 }
 
-QWidget *RibbonCheckBoxPlugin::createWidget(QWidget *parent) {
+auto RibbonCheckBoxPlugin::createWidget(QWidget *parent) -> QWidget * {
     return new Nedrysoft::Ribbon::RibbonCheckBox(parent);
 }
 
-QString RibbonCheckBoxPlugin::name() const {
+auto RibbonCheckBoxPlugin::name() -> QString const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonCheckBox");
 }
 
-QString RibbonCheckBoxPlugin::group() const {
+auto RibbonCheckBoxPlugin::group() -> QString const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonCheckBoxPlugin::icon() const {
+auto RibbonCheckBoxPlugin::icon() -> QIcon const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonCheckBoxPlugin::toolTip() const {
+auto RibbonCheckBoxPlugin::toolTip() -> QString const {
     return tr("A Ribbon Check Box");
 }
 
-QString RibbonCheckBoxPlugin::whatsThis() const {
+auto RibbonCheckBoxPlugin::whatsThis() -> QString const {
     return tr("The Ribbon Check Box is a QCheckBox subclass that is styled to match the Ribbon.");
 }
 
-bool RibbonCheckBoxPlugin::isContainer() const {
+auto RibbonCheckBoxPlugin::isContainer()  -> bool const {
     return false;
 }
 
-QString RibbonCheckBoxPlugin::domXml() const {
+auto RibbonCheckBoxPlugin::domXml() -> QString const {
     return ConfigurationXML;
 }
 
-QString RibbonCheckBoxPlugin::includeFile() const {
+auto RibbonCheckBoxPlugin::includeFile() -> QString const {
     return QStringLiteral("Ribbon/RibbonCheckBox.h");
 }

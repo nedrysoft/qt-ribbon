@@ -145,7 +145,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   event the event information.
              */
-            void paintEvent(QPaintEvent *event) override;
+            auto paintEvent(QPaintEvent *event) -> void override;
 
         private:
             Nedrysoft::Ribbon::RibbonTabBar *m_tabBar;                                  //! The tab bar associated with this ribbon

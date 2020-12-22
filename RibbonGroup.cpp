@@ -42,7 +42,7 @@ Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
     m_font = QFont(fontManager->normalFont(), RibbonGroupDefaultFontSize);
     m_fontMetrics = QFontMetrics(m_font);
 
-    // set the stylesheet font, this then propogates down to all children of the group.
+    // set the stylesheet font, this then propagates down to all children of the group.
 
     this->setStyleSheet(QString("font: %1pt \"%2\"").arg(m_font.pointSize()).arg(m_font.family()));
 
@@ -57,7 +57,7 @@ Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 }
 
-void Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) {
+auto Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) -> void {
     QPainter painter(this);
     auto widgetRect = rect();
     auto currentTheme = Nedrysoft::Ribbon::Light;
@@ -94,17 +94,17 @@ void Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) {
     QWidget::paintEvent(event);
 }
 
-QString Nedrysoft::Ribbon::RibbonGroup::groupName() const {
+auto Nedrysoft::Ribbon::RibbonGroup::groupName() -> QString const {
     return m_groupName;
 }
 
-void Nedrysoft::Ribbon::RibbonGroup::setGroupName(const QString &groupName) {
+auto Nedrysoft::Ribbon::RibbonGroup::setGroupName(const QString &groupName) -> void {
     m_groupName = groupName;
 
     updateMargins();
 }
 
-void Nedrysoft::Ribbon::RibbonGroup::updateMargins() {
+auto Nedrysoft::Ribbon::RibbonGroup::updateMargins() -> void {
     m_textRect = m_fontMetrics.boundingRect(m_groupName);
 
     setMinimumWidth(m_textRect.width()+(RibbonGroupHorizontalMargins*2));

@@ -60,7 +60,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   isDarkMode true if dark mode; otherwise false.
              */
-            void updateStyleSheet(bool isDarkMode);
+            auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
             Nedrysoft::Utils::ThemeSupport *m_themeSupport;                 //! theme support instance

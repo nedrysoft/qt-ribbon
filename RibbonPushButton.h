@@ -70,35 +70,35 @@ namespace Nedrysoft::Ribbon {
              *
              * @returns     the icon assigned to the main button.
              */
-            QIcon icon();
+            auto icon() -> QIcon;
 
             /**
              * @brief       Sets the icon to be displayed on the main button.
              *
              * @param[in]   icon the icon to be displayed on the main button.
              */
-            void setIcon(QIcon &icon);
+            auto setIcon(QIcon &icon) -> void;
 
             /**
              * @brief       Returns the current size of the icon.
              *
              * @returns     the current size of the icon.
              */
-            QSize iconSize();
+            auto iconSize() -> QSize;
 
             /**
              * @brief       Sets the current size of the icon.
              *
              * @param[in]   iconSize the new size of the icon to be used.
              */
-            void setIconSize(QSize iconSize);
+            auto setIconSize(QSize iconSize) -> void;
 
             /**
              * @brief       Returns the text that is displayed under the main button.
              *
              * @returns     the text that is displayed under the main button.
              */
-            QString text();
+            auto text() -> QString;
 
             /**
              * @brief       Sets the text that is displayed under the main button.
@@ -108,20 +108,20 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   text the text that is displayed under the main button.
              */
-            void setText(QString text);
+            auto setText(QString text) -> void;
 
         private:
             /**
              * @brief       Updates the child widgets when the size of the icon is changed.
              */
-            void updateSizes();
+            auto updateSizes() -> void;
 
             /**
              * @brief       Updates the child widgets stylesheets when the operating system theme is changed.
              *
              * @param[in]   isDarkMode true if dark mode; otherwise false.
              */
-            void updateStyleSheets(bool isDarkMode);
+            auto updateStyleSheets(bool isDarkMode) -> void;
 
         public:
             /**
@@ -136,7 +136,7 @@ namespace Nedrysoft::Ribbon {
              * @param[in]   object the target object for the event.
              * @param[in]   event the event information.
              */
-            bool eventFilter(QObject *object, QEvent *event) override;
+            auto eventFilter(QObject *object, QEvent *event) -> bool override;
 
         private:
             QVBoxLayout *m_layout;                              //! the layout for this widget

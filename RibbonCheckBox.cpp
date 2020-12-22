@@ -80,7 +80,7 @@ Nedrysoft::Ribbon::RibbonCheckBox::RibbonCheckBox(QWidget *parent) :
 Nedrysoft::Ribbon::RibbonCheckBox::~RibbonCheckBox() {
 }
 
-void Nedrysoft::Ribbon::RibbonCheckBox::updateStyleSheet(bool isDarkMode) {
+auto Nedrysoft::Ribbon::RibbonCheckBox::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
     styleSheet.replace("[theme]", isDarkMode ? "dark" : "light");

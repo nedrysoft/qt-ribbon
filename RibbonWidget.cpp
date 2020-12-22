@@ -53,7 +53,7 @@ Nedrysoft::Ribbon::RibbonWidget::RibbonWidget(QWidget *parent) :
 #endif
 }
 
-void Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) {
+auto Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) -> void {
     Q_UNUSED(event)
     QPainter painter(this);
     auto widgetRect = rect();

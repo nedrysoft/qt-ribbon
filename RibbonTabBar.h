@@ -57,7 +57,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   event the event information.
              */
-            void paintEvent(QPaintEvent *event) override;
+            auto paintEvent(QPaintEvent *event) -> void override;
 
             /**
              * @brief       Returns the size hint for the tab at position index.
@@ -66,7 +66,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @returns     the size hint for the tab at position index.
              */
-            QSize tabSizeHint(int index) const override;
+            auto tabSizeHint(int index) -> QSize const;
 
             /**
              * @brief       Reimplements: QObject::eventFilter(QObject *watched, QEvent *event).
@@ -76,7 +76,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @returns     true if event was handled, otherwise false.
              */
-            bool eventFilter(QObject *watched, QEvent *event) override;
+            auto eventFilter(QObject *watched, QEvent *event) -> bool override;
 
         private:
             /**
@@ -84,7 +84,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   isDarkMode true if dark mode; otherwise false.
              */
-            void updateStyleSheet(bool isDarkMode);
+            auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
             QFont m_selectedFont;                                   //! font to use on selected tab
