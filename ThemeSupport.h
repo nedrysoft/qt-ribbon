@@ -83,6 +83,8 @@ namespace Nedrysoft::Utils {
             static auto getColor(const QRgb PushButtonColor[]) -> QColor;
 #else
             static auto getColor(const QRgb PushButtonColor[]) -> QColor {
+                Q_UNUSED(PushButtonColor)
+
                 return QColor();
             }
 #endif

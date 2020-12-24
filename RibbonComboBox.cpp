@@ -23,9 +23,6 @@
 
 #include "RibbonComboBox.h"
 
-#include "RibbonFontManager.h"
-#include "ThemeSupport.h"
-
 #include <QApplication>
 #include <QSpacerItem>
 

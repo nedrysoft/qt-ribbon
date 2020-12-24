@@ -30,7 +30,6 @@
 #include <QApplication>
 #include <QPaintEvent>
 #include <QPainter>
-#include <QPushButton>
 #include <QRegularExpression>
 
 Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :

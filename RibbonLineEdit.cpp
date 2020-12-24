@@ -23,11 +23,7 @@
 
 #include "RibbonLineEdit.h"
 
-#include "RibbonFontManager.h"
-#include "ThemeSupport.h"
-
 #include <QApplication>
-#include <QFontMetrics>
 #include <QPainter>
 #include <QPicture>
 #include <QSpacerItem>

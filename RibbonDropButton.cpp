@@ -24,10 +24,8 @@
 #include "RibbonDropButton.h"
 
 #include "RibbonWidget.h"
-#include "ThemeSupport.h"
 
 #include <QApplication>
-#include <QSpacerItem>
 
 constexpr auto ThemeStylesheet = R"(
     QPushButton {

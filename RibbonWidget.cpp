@@ -24,11 +24,9 @@
 #include "RibbonWidget.h"
 
 #include "RibbonTabBar.h"
-#include "ThemeSupport.h"
 
 #include <QPaintEvent>
 #include <QPainter>
-#include <QTabBar>
 
 constexpr auto ThemeStylesheet = R"(
     QWidget {
@@ -48,9 +46,7 @@ Nedrysoft::Ribbon::RibbonWidget::RibbonWidget(QWidget *parent) :
     setMinimumHeight(RibbonBarHeight+TabBarHeight);
     setMaximumHeight(RibbonBarHeight+TabBarHeight);
 
-#if defined(Q_OS_MACOS)
     setDocumentMode(true);
-#endif
 }
 
 auto Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) -> void {

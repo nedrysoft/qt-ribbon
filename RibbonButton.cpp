@@ -25,7 +25,10 @@
 
 #include "RibbonFontManager.h"
 #include "RibbonWidget.h"
+
+#if Q_OS_MACOS
 #include "ThemeSupport.h"
+#endif
 
 #include <QApplication>
 #include <QStyle>

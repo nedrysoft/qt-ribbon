@@ -25,7 +25,6 @@
 
 #include "RibbonFontManager.h"
 #include "RibbonWidget.h"
-#include "ThemeSupport.h"
 
 #include <QApplication>
 #include <QPaintEvent>
