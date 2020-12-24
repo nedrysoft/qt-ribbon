@@ -108,7 +108,7 @@ auto Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *even
     return false;
 }
 
-auto Nedrysoft::Ribbon::RibbonTabBar::tabSizeHint(int index) -> QSize const {
+auto Nedrysoft::Ribbon::RibbonTabBar::tabSizeHint(int index) const -> QSize {
     auto size = QTabBar::tabSizeHint(index);
 
     size.setHeight(Ribbon::TabBarHeight);
