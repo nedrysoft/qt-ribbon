@@ -66,8 +66,10 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
-
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
+    if (m_themeSupport) {
+        delete m_themeSupport;
+    }
 }
 
 auto Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) -> void {

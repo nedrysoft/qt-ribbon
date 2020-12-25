@@ -47,11 +47,6 @@ namespace Nedrysoft::Ribbon {
             explicit RibbonFontManager();
 
             /**
-             * @brief       Destroys the MainWindow.
-             */
-            ~RibbonFontManager();
-
-            /**
              * @brief       Delete the copy constructor.
              */
             RibbonFontManager(const RibbonFontManager&) = delete;

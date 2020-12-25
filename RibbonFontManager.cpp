@@ -31,10 +31,10 @@ Nedrysoft::Ribbon::RibbonFontManager::RibbonFontManager() :
 
 }
 
-auto Nedrysoft::Ribbon::RibbonFontManager::getInstance() -> Nedrysoft::Ribbon::RibbonFontManager * {
-    static auto instance = new RibbonFontManager();
+auto Nedrysoft::Ribbon::RibbonFontManager::getInstance() ->Nedrysoft::Ribbon::RibbonFontManager * {
+    static RibbonFontManager instance;
 
-    return instance;
+    return &instance;
 }
 
 auto Nedrysoft::Ribbon::RibbonFontManager::normalFont() -> QString const {

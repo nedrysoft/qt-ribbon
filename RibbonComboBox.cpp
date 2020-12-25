@@ -64,6 +64,9 @@ Nedrysoft::Ribbon::RibbonComboBox::RibbonComboBox(QWidget *parent) :
 }
 
 Nedrysoft::Ribbon::RibbonComboBox::~RibbonComboBox() {
+    if (m_themeSupport) {
+        delete m_themeSupport;
+    }
 }
 
 auto Nedrysoft::Ribbon::RibbonComboBox::updateStyleSheet(bool isDarkMode) -> void {

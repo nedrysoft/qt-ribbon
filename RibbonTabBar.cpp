@@ -45,6 +45,7 @@ Nedrysoft::Ribbon::RibbonTabBar::RibbonTabBar(QWidget *parent) :
 
     m_normalFont = QFont(fontManager->normalFont(), DefaultFontSize);
     m_selectedFont = QFont(fontManager->boldFont(), DefaultFontSize, QFont::Bold);
+
     m_mouseInWidget = false;
 
     connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
@@ -57,6 +58,12 @@ Nedrysoft::Ribbon::RibbonTabBar::RibbonTabBar(QWidget *parent) :
     setMouseTracking(true);
     installEventFilter(this);
 #endif
+}
+
+Nedrysoft::Ribbon::RibbonTabBar::~RibbonTabBar() {
+    if (m_themeSupport) {
+        delete m_themeSupport;
+    }
 }
 
 auto Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *event) -> bool {

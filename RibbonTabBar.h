@@ -31,6 +31,8 @@
 #include <QTabBar>
 
 namespace Nedrysoft::Ribbon {
+    class RibbonFontManager;
+
     /**
      * @brief       The RibbonTabBar widget provides a ribbon stylised tab bar.
      *
@@ -50,6 +52,11 @@ namespace Nedrysoft::Ribbon {
              * @param[in]   parent the owner widget.
              */
             explicit RibbonTabBar(QWidget *parent = nullptr);
+
+            /**
+             * @brief       Destroys the RibbonTabBar.
+             */
+            ~RibbonTabBar();
 
         protected:
             /**

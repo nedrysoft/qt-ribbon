@@ -92,9 +92,21 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
 }
 
 Nedrysoft::Ribbon::RibbonDropButton::~RibbonDropButton() {
-    m_mainButton->deleteLater();
-    m_dropButton->deleteLater();
-    m_layout->deleteLater();
+    if (m_mainButton) {
+        delete m_mainButton;
+    }
+
+    if (m_dropButton) {
+        delete m_dropButton;
+    }
+
+    if (m_layout) {
+        delete m_layout;
+    }
+
+    if (m_themeSupport) {
+        delete m_themeSupport;
+    }
 }
 
 QIcon Nedrysoft::Ribbon::RibbonDropButton::icon() {

@@ -71,6 +71,9 @@ Nedrysoft::Ribbon::RibbonButton::RibbonButton(QWidget *parent) :
 }
 
 Nedrysoft::Ribbon::RibbonButton::~RibbonButton() {
+    if (m_themeSupport) {
+        delete m_themeSupport;
+    }
 }
 
 auto Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) -> void {
