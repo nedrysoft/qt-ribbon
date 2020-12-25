@@ -26,7 +26,7 @@
 #include "RibbonFontManager.h"
 #include "RibbonWidget.h"
 
-#if Q_OS_MACOS
+#if defined(Q_OS_MACOS)
 #include "ThemeSupport.h"
 #endif
 
