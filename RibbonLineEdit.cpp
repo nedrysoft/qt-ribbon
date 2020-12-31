@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QPainter>
 #include <QPicture>
+#include <QResizeEvent>
 #include <QSpacerItem>
 #include <QDebug>
 
@@ -41,6 +42,8 @@ constexpr auto ThemeStylesheet = R"(
         border-color: [border-colour];
     }
 )";
+
+constexpr auto lineEditHeightAdjustment = 2;
 
 Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
         QTextEdit(parent),
@@ -64,6 +67,22 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     setLineWrapMode(QTextEdit::NoWrap);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    static int minimumLineHeight = 0;
+
+    if (!minimumLineHeight) {
+        QLineEdit lineEdit;
+
+        minimumLineHeight = lineEdit.minimumSizeHint().height()+lineEditHeightAdjustment;
+    }
+
+    setSizePolicy(sizePolicy().horizontalPolicy(), QSizePolicy::Fixed);
+
+    setFixedHeight(minimumLineHeight);
+
+    if (placeholderText().isEmpty()) {
+        setPlaceholderText(" ");
+    }
 }
 
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
