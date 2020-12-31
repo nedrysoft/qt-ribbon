@@ -75,6 +75,7 @@ Nedrysoft::Ribbon::RibbonCheckBox::RibbonCheckBox(QWidget *parent) :
 }
 
 Nedrysoft::Ribbon::RibbonCheckBox::~RibbonCheckBox() {
+    delete m_themeSupport;
 }
 
 auto Nedrysoft::Ribbon::RibbonCheckBox::updateStyleSheet(bool isDarkMode) -> void {
