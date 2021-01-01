@@ -56,10 +56,14 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     });
 
     connect(this, &Nedrysoft::Ribbon::RibbonLineEdit::textChanged, [=]() {
+#if defined(__clang__)
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "VirtualCallInCtorOrDtor"
+#endif
         resizeEvent(nullptr);
+#if defined(__clang__)
 #pragma clang diagnostic pop
+#endif
     });
 
     updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
