@@ -80,7 +80,7 @@ add_library(${PROJECT_NAME} SHARED
     ${library_SOURCES}
 )
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
 if(APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")
@@ -88,7 +88,7 @@ if(APPLE)
     target_link_libraries(${PROJECT_NAME} stdc++ objc)
 endif()
 
-target_link_libraries(${PROJECT_NAME} "Qt5::Widgets")
+target_link_libraries(${PROJECT_NAME} "Qt5::Core" "Qt5::Widgets")
 
 if(DEFINED NEDRYSOFT_RIBBON_LIBRARY_DIR)
     set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${NEDRYSOFT_RIBBON_LIBRARY_DIR}")
