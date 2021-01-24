@@ -72,7 +72,11 @@ Nedrysoft::Ribbon::RibbonComboBox::~RibbonComboBox() {
 auto Nedrysoft::Ribbon::RibbonComboBox::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
+#if defined(Q_OS_MACOS)
     styleSheet.replace("[selected-background-colour]", Nedrysoft::Utils::ThemeSupport::getHighlightedBackground().name());
+#else
+    styleSheet.replace("[selected-background-colour]", this->palette().highlight().color().name());
+#endif
     styleSheet.replace("[theme]", isDarkMode ? "dark" : "light");
 
     if (isDarkMode) {
