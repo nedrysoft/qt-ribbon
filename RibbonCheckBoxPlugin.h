@@ -75,7 +75,7 @@ class RibbonCheckBoxPlugin :
          *
          * @returns     the XML describing the widgets properties.
          */
-        auto domXml() 0> QString const override;
+        auto domXml() -> QString const override;
 
         /**
          * @brief       Returns the name of the group to which the widget belongs.
