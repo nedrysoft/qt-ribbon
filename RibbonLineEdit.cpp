@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2020 Adrian Carpenter
  *
- * This file is part of the Nedrysoft Ribbon Bar. (https://github.com/fizzyade/qt-ribbon)
+ * This file is part of the Nedrysoft Ribbon Bar. (https://github.com/nedrysoft/qt-ribbon)
  *
  * A cross-platform ribbon bar for Qt applications.
  *
