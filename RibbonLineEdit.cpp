@@ -24,11 +24,11 @@
 #include "RibbonLineEdit.h"
 
 #include <QApplication>
+#include <QMimeData>
 #include <QPainter>
 #include <QPicture>
 #include <QResizeEvent>
 #include <QSpacerItem>
-#include <QDebug>
 
 constexpr auto ThemeStylesheet = R"(
     QTextEdit {
@@ -89,6 +89,36 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     }
 }
 
+auto Nedrysoft::Ribbon::RibbonLineEdit::event(QEvent *e) -> bool {
+    switch(e->type()) {
+        case QEvent::KeyPress:
+        case QEvent::KeyRelease: {
+            auto keyEvent = dynamic_cast<QKeyEvent *>(e);
+
+            switch(keyEvent->key()) {
+                case Qt::Key_Enter:
+                case Qt::Key_Return: {
+                    e->accept();
+
+                    return true;
+                }
+
+                default: {
+                    break;
+                }
+            }
+
+            break;
+        }
+
+        default: {
+            break;
+        }
+    }
+
+    return QTextEdit::event(e);
+}
+
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
     if (m_themeSupport) {
         delete m_themeSupport;
@@ -120,4 +150,13 @@ auto Nedrysoft::Ribbon::RibbonLineEdit::resizeEvent(QResizeEvent *event) -> void
     }
 }
 
+void Nedrysoft::Ribbon::RibbonLineEdit::insertFromMimeData(const QMimeData *source) {
+    if (source->hasText() || source->hasHtml()) {
+        auto plainString = source->text();
 
+        plainString = plainString.replace("\r", "");
+        plainString = plainString.replace("\n", "");
+
+        this->insertPlainText(plainString);
+    }
+}

@@ -57,11 +57,30 @@ namespace Nedrysoft::Ribbon {
 
         protected:
             /**
-             * @brief       Reimplements QWidget::resizeEvent(QResizeEvent *event)
+             * @brief       Reimplements QTextEdit::resizeEvent(QResizeEvent *event)
              *
              * @param[in]   event the resize event.
              */
             auto resizeEvent(QResizeEvent *event) -> void override;
+
+            /**
+             * @brief       Reimplements QTextEdit::event(QEvent *event).
+             *
+             * @note        Used to discard enter + return keys.
+             *
+             * @param[in[   event the event information.
+             *
+             * @returns     true if event handled; otherwise false.
+             */
+            auto event(QEvent *event) -> bool override;
+
+            /**
+             * @brief       Reimplements QTextEdit::insertFromMimeData(QEvent *event).
+             *
+             * @note        Used to discard any carriage returns or line feeds from paste (and also ensure that
+             *              only text can be pasted.
+             */
+            auto insertFromMimeData(const QMimeData *source) -> void override;
 
         private:
             /**
