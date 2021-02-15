@@ -44,7 +44,7 @@ RibbonToolButtonPlugin::RibbonToolButtonPlugin(QObject *parent) :
 
 }
 
-auto RibbonToolButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonToolButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -54,42 +54,42 @@ auto RibbonToolButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> v
     m_initialized = true;
 }
 
-auto RibbonToolButtonPlugin::isInitialized() -> bool const {
+bool RibbonToolButtonPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonToolButtonPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget * RibbonToolButtonPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonToolButton(parent);
 }
 
-auto RibbonToolButtonPlugin::name() -> QString const {
+QString RibbonToolButtonPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonToolButton");
 }
 
-auto RibbonToolButtonPlugin::group() -> QString const {
+QString RibbonToolButtonPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonToolButtonPlugin::icon() -> QIcon const {
+QIcon RibbonToolButtonPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonToolButtonPlugin::toolTip() -> QString const {
+QString RibbonToolButtonPlugin::toolTip() const {
     return tr("A Ribbon Tool Button");
 }
 
-auto RibbonToolButtonPlugin::whatsThis() -> QString const {
+QString RibbonToolButtonPlugin::whatsThis() const {
     return tr("The Ribbon Tool Button is a control that provides a tool button in the ribbon style.");
 }
 
-auto RibbonToolButtonPlugin::isContainer() -> bool const {
+bool RibbonToolButtonPlugin::isContainer() const {
     return true;
 }
 
-auto RibbonToolButtonPlugin::domXml() -> QString const {
+QString RibbonToolButtonPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-auto RibbonToolButtonPlugin::includeFile() -> QString const {
+QString RibbonToolButtonPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonToolButton.h");
 }

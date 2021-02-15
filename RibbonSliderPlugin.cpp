@@ -39,7 +39,7 @@ RibbonSliderPlugin::RibbonSliderPlugin(QObject *parent) :
 
 }
 
-auto RibbonSliderPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonSliderPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -49,42 +49,42 @@ auto RibbonSliderPlugin::initialize(QDesignerFormEditorInterface *core) -> void 
     m_initialized = true;
 }
 
-auto RibbonSliderPlugin::isInitialized() -> bool const {
+bool RibbonSliderPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonSliderPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget *RibbonSliderPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonSlider(parent);
 }
 
-auto RibbonSliderPlugin::name() -> QString const {
+QString RibbonSliderPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonSlider");
 }
 
-auto RibbonSliderPlugin::group() -> QString const {
+QString RibbonSliderPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonSliderPlugin::icon() -> QIcon const {
+QIcon RibbonSliderPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonSliderPlugin::toolTip() -> QString const {
+QString RibbonSliderPlugin::toolTip() const {
     return QString();
 }
 
-auto RibbonSliderPlugin::whatsThis() -> QString const {
+QString RibbonSliderPlugin::whatsThis()  const {
     return tr("The Ribbon Line Edit is a QSlider subclass that is styled to match the Ribbon.");
 }
 
-auto RibbonSliderPlugin::isContainer() -> bool const {
+bool RibbonSliderPlugin::isContainer() const {
     return false;
 }
 
-auto RibbonSliderPlugin::domXml() -> QString const {
+QString RibbonSliderPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-auto RibbonSliderPlugin::includeFile() -> QString const {
+QString RibbonSliderPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonSlider.h");
 }

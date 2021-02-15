@@ -52,7 +52,7 @@ RibbonGroupPlugin::RibbonGroupPlugin(QObject *parent) :
 
 }
 
-auto RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -62,44 +62,44 @@ auto RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
     m_initialized = true;
 }
 
-auto RibbonGroupPlugin::isInitialized() -> bool const {
+bool RibbonGroupPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonGroupPlugin::createWidget(QWidget *parent) -> QWidget  {
+QWidget *RibbonGroupPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonGroup(parent);
 }
 
-auto RibbonGroupPlugin::name() -> QString const {
+QString RibbonGroupPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonGroup");
 }
 
-auto RibbonGroupPlugin::group() -> QString  const {
+QString RibbonGroupPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonGroupPlugin::icon() -> QIcon  const {
+QIcon RibbonGroupPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonGroupPlugin::toolTip() -> QString  const {
+QString RibbonGroupPlugin::toolTip() const {
     return tr("A Ribbon Group");
 }
 
-auto RibbonGroupPlugin::whatsThis() -> QString const {
+QString RibbonGroupPlugin::whatsThis() const {
     return tr("The Ribbon Group is a container that contains a set of controls that are logically grouped together.");
 }
 
-auto RibbonGroupPlugin::isContainer() -> bool const {
+bool RibbonGroupPlugin::isContainer() const {
     return true;
 }
 
-auto RibbonGroupPlugin::domXml() -> QString const {
+QString RibbonGroupPlugin::domXml() const {
     return QString(ConfigurationXML)
             .replace("[default-width]", QString::number(Nedrysoft::Ribbon::RibbonBarDefaultWidth))
             .replace("[default-height]", QString::number(Nedrysoft::Ribbon::RibbonBarHeight));
 }
 
-auto RibbonGroupPlugin::includeFile() -> QString const {
+QString RibbonGroupPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonGroup.h");
 }

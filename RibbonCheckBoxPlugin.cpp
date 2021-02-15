@@ -45,7 +45,7 @@ RibbonCheckBoxPlugin::RibbonCheckBoxPlugin(QObject *parent) :
 
 }
 
-auto RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -55,42 +55,42 @@ auto RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) -> voi
     m_initialized = true;
 }
 
-auto RibbonCheckBoxPlugin::isInitialized() -> const {
+bool RibbonCheckBoxPlugin::isInitialized()  const {
     return m_initialized;
 }
 
-auto RibbonCheckBoxPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget *RibbonCheckBoxPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonCheckBox(parent);
 }
 
-auto RibbonCheckBoxPlugin::name() -> QString const {
+QString RibbonCheckBoxPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonCheckBox");
 }
 
-auto RibbonCheckBoxPlugin::group() -> QString const {
+QString RibbonCheckBoxPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonCheckBoxPlugin::icon() -> QIcon const {
+QIcon RibbonCheckBoxPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonCheckBoxPlugin::toolTip() -> QString const {
+QString RibbonCheckBoxPlugin::toolTip() const {
     return tr("A Ribbon Check Box");
 }
 
-auto RibbonCheckBoxPlugin::whatsThis() -> QString const {
+QString RibbonCheckBoxPlugin::whatsThis() const {
     return tr("The Ribbon Check Box is a QCheckBox subclass that is styled to match the Ribbon.");
 }
 
-auto RibbonCheckBoxPlugin::isContainer()  -> bool const {
+bool RibbonCheckBoxPlugin::isContainer()  const {
     return false;
 }
 
-auto RibbonCheckBoxPlugin::domXml() -> QString const {
+QString RibbonCheckBoxPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-auto RibbonCheckBoxPlugin::includeFile() -> QString const {
+QString RibbonCheckBoxPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonCheckBox.h");
 }

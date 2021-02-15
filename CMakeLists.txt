@@ -60,6 +60,8 @@ set(library_SOURCES
     RibbonResources.qrc
     RibbonSlider.cpp
     RibbonSlider.h
+    RibbonSliderPlugin.cpp
+    RibbonSliderPlugin.h
     RibbonSpec.h
     RibbonTabBar.cpp
     RibbonTabBar.h

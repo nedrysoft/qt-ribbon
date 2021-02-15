@@ -47,7 +47,7 @@ RibbonLineEditPlugin::RibbonLineEditPlugin(QObject *parent) :
 
 }
 
-auto RibbonLineEditPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonLineEditPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -57,42 +57,42 @@ auto RibbonLineEditPlugin::initialize(QDesignerFormEditorInterface *core) -> voi
     m_initialized = true;
 }
 
-auto RibbonLineEditPlugin::isInitialized() -> bool const {
+bool RibbonLineEditPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonLineEditPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget *RibbonLineEditPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonLineEdit(parent);
 }
 
-auto RibbonLineEditPlugin::name() -> QString const {
+QString RibbonLineEditPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonLineEdit");
 }
 
-auto RibbonLineEditPlugin::group() -> QString const {
+QString RibbonLineEditPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonLineEditPlugin::icon() -> QIcon const {
+QIcon RibbonLineEditPlugin::icon()  const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonLineEditPlugin::toolTip() -> QString const {
+QString RibbonLineEditPlugin::toolTip() const {
     return tr("A Ribbon Line Edit");
 }
 
-auto RibbonLineEditPlugin::whatsThis() -> QString const {
+QString RibbonLineEditPlugin::whatsThis() const {
     return tr("The Ribbon Line Edit is a QLineEdit subclass that is styled to match the Ribbon.");
 }
 
-auto RibbonLineEditPlugin::isContainer() -> bool const {
+bool RibbonLineEditPlugin::isContainer() const {
     return false;
 }
 
-auto RibbonLineEditPlugin::domXml() -> QString const {
+QString RibbonLineEditPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-auto RibbonLineEditPlugin::includeFile() -> QString const {
+QString RibbonLineEditPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonLineEdit.h");
 }

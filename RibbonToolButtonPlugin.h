@@ -54,75 +54,75 @@ class RibbonToolButtonPlugin :
          *
          * @returns     true if it container; otherwise false.
          */
-        auto isContainer() -> bool const;
+        bool isContainer() const override;
 
         /**
          * @brief       Returns true if the widget has been initialized; otherwise returns false.
          *
          * @returns     true if initialised; otherwise false.
          */
-        auto isInitialized() -> bool const;
+        bool isInitialized() const override;
 
         /**
          * @brief       Returns the icon used to represent the custom widget in Qt Designer's widget box.
          *
          * @returns     the icon used to represent the custom widget in Qt Designer's widget box.
          */
-        auto icon() -> QIcon const;
+        QIcon icon() const override;
 
         /**
          * @brief       Returns the XML that is used to describe the custom widget's properties to Qt Designer.
          *
          * @returns     the XML describing the widgets properties.
          */
-        auto domXml() -> QString const;
+        QString domXml() const override;
 
         /**
          * @brief       Returns the name of the group to which the widget belongs.
          *
          * @returns     the name of the group.
          */
-        auto group() -> QString const;
+        QString group() const override;
 
         /**
          * @brief       Returns the path to the include file that uic uses when creating code for the widget.
          *
          * @returns     the path to the include file.
          */
-        auto includeFile() -> QString const;
+        QString includeFile() const override;
 
         /**
          * @brief       Returns the class name of the widget supplied by the interface.
          *
          * @returns     the name of the widget.
          */
-        auto name() -> QString const;
+        QString name() const override;
 
         /**
          * @brief       Returns a short description of the widget that can be used by Qt Designer in a tool tip.
          *
          * @returns     the description.
          */
-        auto toolTip() -> QString const;
+        QString toolTip() const override;
 
         /**
          * @brief       Returns a description of the widget that can be used by Qt Designer in "What's This?" help for the widget.
          *
          * @returns     the description.
          */
-        auto whatsThis() -> QString const;
+        QString whatsThis() const override;
 
         /**
          * @brief       Returns a new instance of the RibbonToolButton class, with the given parent.
          *
          * @returns     the widget instance.
          */
-        auto createWidget(QWidget *parent) -> QWidget * override;
+        QWidget *createWidget(QWidget *parent) override;
 
         /**
          * @brief       Initializes the widget for use with the specified formEditor interface.
          */
-        auto initialize(QDesignerFormEditorInterface *core) -> void override;
+        void initialize(QDesignerFormEditorInterface *core) override;
 
     private:
         bool m_initialized = false;                         //! holds whether designer has initialised the factory yet

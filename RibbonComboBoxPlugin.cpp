@@ -47,7 +47,7 @@ RibbonComboBoxPlugin::RibbonComboBoxPlugin(QObject *parent) :
 
 }
 
-auto RibbonComboBoxPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonComboBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -57,42 +57,42 @@ auto RibbonComboBoxPlugin::initialize(QDesignerFormEditorInterface *core) -> voi
     m_initialized = true;
 }
 
-auto RibbonComboBoxPlugin::isInitialized() -> bool const {
+bool RibbonComboBoxPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonComboBoxPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget *RibbonComboBoxPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonComboBox(parent);
 }
 
-auto RibbonComboBoxPlugin::name() -> QString const {
+QString RibbonComboBoxPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonComboBox");
 }
 
-auto RibbonComboBoxPlugin::group() -> QString const {
+QString RibbonComboBoxPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonComboBoxPlugin::icon() -> QIcon const {
+QIcon RibbonComboBoxPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonComboBoxPlugin::toolTip() -> QString const {
+QString RibbonComboBoxPlugin::toolTip() const {
     return tr("A Ribbon Combo Box");
 }
 
-auto RibbonComboBoxPlugin::whatsThis() -> QString const {
+QString RibbonComboBoxPlugin::whatsThis() const {
     return tr("The Ribbon Combo Box is a QComboBox subclass that is styled to match the Ribbon.");
 }
 
-auto RibbonComboBoxPlugin::isContainer() -> bool const {
+bool RibbonComboBoxPlugin::isContainer() const {
     return false;
 }
 
-auto RibbonComboBoxPlugin::domXml() -> QString const {
+QString RibbonComboBoxPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-auto RibbonComboBoxPlugin::includeFile() -> QString const {
+QString RibbonComboBoxPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonComboBox.h");
 }

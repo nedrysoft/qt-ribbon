@@ -48,7 +48,7 @@ RibbonWidgetPlugin::RibbonWidgetPlugin(QObject *parent) :
     qRegisterMetaType<RibbonWidgetPlugin *>("RibbonWidgetPlugin");
 }
 
-auto RibbonWidgetPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonWidgetPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -58,44 +58,44 @@ auto RibbonWidgetPlugin::initialize(QDesignerFormEditorInterface *core) -> void 
     m_initialized = true;
 }
 
-auto RibbonWidgetPlugin::isInitialized() -> bool const {
+bool RibbonWidgetPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonWidgetPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget * RibbonWidgetPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonWidget(parent);
 }
 
-auto RibbonWidgetPlugin::name() -> QString const {
+QString RibbonWidgetPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonWidget");
 }
 
-auto RibbonWidgetPlugin::group() -> QString const {
+QString RibbonWidgetPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonWidgetPlugin::icon() -> QIcon const {
+QIcon RibbonWidgetPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonWidgetPlugin::toolTip() -> QString const {
+QString RibbonWidgetPlugin::toolTip() const {
     return tr("A Ribbon Widget");
 }
 
-auto RibbonWidgetPlugin::whatsThis() -> QString const {
+QString RibbonWidgetPlugin::whatsThis() const {
     return tr("The Ribbon Widget is the top level container of the Ribbon Bar.");
 }
 
-auto RibbonWidgetPlugin::isContainer() -> bool const {
+bool RibbonWidgetPlugin::isContainer() const {
     return false;
 }
 
-auto RibbonWidgetPlugin::domXml() -> QString const {
+QString RibbonWidgetPlugin::domXml() const {
     return QString(ConfigurationXML)
             .replace("[default-width]", QString::number(Nedrysoft::Ribbon::RibbonBarDefaultWidth))
             .replace("[default-height]", QString::number(Nedrysoft::Ribbon::RibbonBarHeight));
 }
 
-auto RibbonWidgetPlugin::includeFile() -> QString const {
+QString RibbonWidgetPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonWidget.h");
 }

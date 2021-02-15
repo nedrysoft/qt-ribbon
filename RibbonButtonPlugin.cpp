@@ -44,7 +44,7 @@ RibbonButtonPlugin::RibbonButtonPlugin(QObject *parent) :
 
 }
 
-auto RibbonButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> void {
+void RibbonButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -54,42 +54,42 @@ auto RibbonButtonPlugin::initialize(QDesignerFormEditorInterface *core) -> void 
     m_initialized = true;
 }
 
-bool RibbonButtonPlugin::isInitialized() -> void const {
+bool RibbonButtonPlugin::isInitialized() const {
     return m_initialized;
 }
 
-auto RibbonButtonPlugin::createWidget(QWidget *parent) -> QWidget * {
+QWidget *RibbonButtonPlugin::createWidget(QWidget *parent) {
     return new Nedrysoft::Ribbon::RibbonButton(parent);
 }
 
-auto RibbonButtonPlugin::name() -> QString const {
+QString RibbonButtonPlugin::name() const {
     return QStringLiteral("Nedrysoft::Ribbon::RibbonButton");
 }
 
-auto RibbonButtonPlugin::group() -> QString const {
+QString RibbonButtonPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-auto RibbonButtonPlugin::icon() -> QIcon const {
+QIcon RibbonButtonPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-auto RibbonButtonPlugin::toolTip() -> QString const {
+QString RibbonButtonPlugin::toolTip() const {
     return tr("A Ribbon Button");
 }
 
-auto RibbonButtonPlugin::whatsThis() -> QString const {
+QString RibbonButtonPlugin::whatsThis() const {
     return tr("The Ribbon Button is a control that provides a push button and is styled to match the Ribbon.");
 }
 
-auto RibbonButtonPlugin::isContainer() -> bool const {
+bool RibbonButtonPlugin::isContainer() const {
     return true;
 }
 
-auto RibbonButtonPlugin::domXml() -> QString const {
+QString RibbonButtonPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-auto RibbonButtonPlugin::includeFile() -> QString const {
+QString RibbonButtonPlugin::includeFile() const {
     return QStringLiteral("Ribbon/RibbonButton.h");
 }
