@@ -60,15 +60,11 @@ set(library_SOURCES
     RibbonResources.qrc
     RibbonSlider.cpp
     RibbonSlider.h
-    RibbonSliderPlugin.cpp
-    RibbonSliderPlugin.h
     RibbonSpec.h
     RibbonTabBar.cpp
     RibbonTabBar.h
     RibbonToolButton.cpp
     RibbonToolButton.h
-    RibbonToolButtonPlugin.cpp
-    RibbonToolButtonPlugin.h
     RibbonWidget.cpp
     RibbonWidget.h
     ThemeSupport.h
@@ -126,6 +122,10 @@ if(NEDRYSOFT_RIBBON_BUILD_DESIGNER_PLUGIN)
         RibbonLineEditPlugin.h
         RibbonPushButtonPlugin.cpp
         RibbonPushButtonPlugin.h
+        RibbonSliderPlugin.cpp
+        RibbonSliderPlugin.h
+        RibbonToolButtonPlugin.cpp
+        RibbonToolButtonPlugin.h
         RibbonWidgetsCollection.cpp
         RibbonWidgetsCollection.h
         RibbonWidgetPlugin.cpp

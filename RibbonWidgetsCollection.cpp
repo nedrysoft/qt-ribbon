@@ -32,6 +32,7 @@
 #include "RibbonPushButtonPlugin.h"
 #include "RibbonToolButtonPlugin.h"
 #include "RibbonWidgetPlugin.h"
+#include "RibbonSliderPlugin.h"
 
 RibbonWidgetsCollection::RibbonWidgetsCollection(QObject *parent) :
         QObject(parent) {
@@ -45,6 +46,7 @@ RibbonWidgetsCollection::RibbonWidgetsCollection(QObject *parent) :
     m_widgets.append(new RibbonCheckBoxPlugin(this));
     m_widgets.append(new RibbonToolButtonPlugin(this));
     m_widgets.append(new RibbonButtonPlugin(this));
+    m_widgets.append(new RibbonSliderPlugin(this));
 }
 
 QList<QDesignerCustomWidgetInterface*> RibbonWidgetsCollection::customWidgets() const {
