@@ -83,7 +83,7 @@ namespace Nedrysoft::Ribbon {
              *
              * @param[in]   event the event information.
              */
-            virtual auto paintEvent(QPaintEvent *event) -> void override;
+            auto paintEvent(QPaintEvent *event) -> void override;
 
         private:
             QString m_groupName;                                    //! Group name that is displayed
