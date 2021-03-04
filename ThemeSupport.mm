@@ -38,27 +38,27 @@ Nedrysoft::Utils::ThemeSupport::ThemeSupport() {
 }
 
 auto Nedrysoft::Utils::ThemeSupport::isDarkMode() -> bool{
-    NSAppearance *appearance = nullptr;
+    if (@available(macOS 10.14, *)) {
+        NSAppearance *appearance = nullptr;
 
-    if (@available(macOS 11, *)) {
-        appearance = NSAppearance.currentDrawingAppearance;
-    } else if (@available(macOS 10.14, *)) {
+        if (@available(macOS 11, *)) {
+            appearance = NSAppearance.currentDrawingAppearance;
+        } else if (@available(macOS 10.14, *)) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        appearance = NSAppearance.currentAppearance;
+            appearance = NSAppearance.currentAppearance;
 #pragma clang diagnostic pop
-    }
+        }
 
-    if (appearance) {
         NSAppearanceName basicAppearance = [appearance bestMatchFromAppearancesWithNames:@[
             NSAppearanceNameAqua,
             NSAppearanceNameDarkAqua
         ]];
 
         return [basicAppearance isEqualToString:NSAppearanceNameDarkAqua]==YES;
-    } else {
-        return false;
     }
+
+    return false;
 }
 
 auto Nedrysoft::Utils::ThemeSupport::getColor(const QRgb colourPair[]) -> QColor {
