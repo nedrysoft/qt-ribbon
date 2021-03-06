@@ -26,6 +26,7 @@
 #include "RibbonWidget.h"
 
 #include <QApplication>
+#include <QDebug>
 
 constexpr auto ThemeStylesheet = R"(
     QPushButton {
@@ -137,7 +138,7 @@ void Nedrysoft::Ribbon::RibbonDropButton::updateStyleSheets(bool isDarkMode) {
     QString styleSheet(ThemeStylesheet);
 
     if (isDarkMode) {
-        styleSheet.replace("[normal-background-colour]", palette().color(QPalette::Window).name());
+        styleSheet.replace("[normal-background-colour]", "#434343");
     } else {
         styleSheet.replace("[normal-background-colour]", "#ffffff");
     }
@@ -154,8 +155,7 @@ void Nedrysoft::Ribbon::RibbonDropButton::updateStyleSheets(bool isDarkMode) {
         styleSheet.replace("[pressed-colour]", "#808080");
     }
 
-    m_mainButton->setStyleSheet(styleSheet);
-    m_dropButton->setStyleSheet(styleSheet);
+    this->setStyleSheet(styleSheet);
 
     if (isDarkMode) {
         m_dropButton->setIcon(QIcon(":/Nedrysoft/Ribbon/icons/arrow-drop-dark@2x.png"));
