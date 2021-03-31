@@ -120,7 +120,7 @@ namespace Nedrysoft::Ribbon {
             QPushButton *m_mainButton;                          //! the main button
             QPushButton *m_dropButton;                          //! the drop down button
             QSize m_iconSize;                                   //! the size of the icon
-            Nedrysoft::Utils::ThemeSupport *m_themeSupport;     //! theme support instance
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! theme support instance
     };
 }
 

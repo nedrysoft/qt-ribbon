@@ -143,7 +143,7 @@ namespace Nedrysoft::Ribbon {
             QPushButton *m_mainButton;                          //! the main button
             QLabel *m_buttonLabel;                              //! the main button label
             QSize m_iconSize;                                   //! the size of the icon
-            Nedrysoft::Utils::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
 }
 

@@ -39,7 +39,7 @@ constexpr auto ThemeStylesheet = R"(
 
 Nedrysoft::Ribbon::RibbonTabBar::RibbonTabBar(QWidget *parent) :
         QTabBar(parent),
-        m_themeSupport(new Nedrysoft::Utils::ThemeSupport) {
+        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
 
     auto fontManager = Nedrysoft::Ribbon::RibbonFontManager::getInstance();
 
@@ -48,11 +48,11 @@ Nedrysoft::Ribbon::RibbonTabBar::RibbonTabBar(QWidget *parent) :
 
     m_mouseInWidget = false;
 
-    connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
     });
 
-    updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
+    updateStyleSheet(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
 
 #if defined(Q_OS_UNIX)
     setMouseTracking(true);
@@ -132,7 +132,7 @@ auto Nedrysoft::Ribbon::RibbonTabBar::paintEvent(QPaintEvent *event) -> void {
     QPainter painter(this);
     auto  currentTheme = Ribbon::Light;
 
-    if (Nedrysoft::Utils::ThemeSupport::isDarkMode()) {
+    if (Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode()) {
         currentTheme = Nedrysoft::Ribbon::Dark;
     }
 

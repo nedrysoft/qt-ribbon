@@ -47,11 +47,11 @@ constexpr auto lineEditHeightAdjustment = 2;
 
 Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
         QTextEdit(parent),
-        m_themeSupport(new Nedrysoft::Utils::ThemeSupport) {
+        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
 
     setAttribute(Qt::WA_MacShowFocusRect,false);
 
-    connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
     });
 
@@ -66,7 +66,7 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
 #endif
     });
 
-    updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
+    updateStyleSheet(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
 
     setLineWrapMode(QTextEdit::NoWrap);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

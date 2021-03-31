@@ -63,7 +63,7 @@ namespace Nedrysoft::Ribbon {
             auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
-            Nedrysoft::Utils::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
 }
 

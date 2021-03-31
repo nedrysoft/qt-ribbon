@@ -25,6 +25,7 @@
 
 #include "RibbonTabBar.h"
 
+#include <QApplication>
 #include <QPaintEvent>
 #include <QPainter>
 
@@ -55,7 +56,7 @@ auto Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) -> void {
     auto widgetRect = rect();
     auto currentTheme = Nedrysoft::Ribbon::Light;
 
-    if (Nedrysoft::Utils::ThemeSupport::isDarkMode()) {
+    if (Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode()) {
         currentTheme = Nedrysoft::Ribbon::Dark;
     }
 

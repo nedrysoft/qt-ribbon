@@ -98,7 +98,7 @@ namespace Nedrysoft::Ribbon {
             QFont m_normalFont;                                     //! font to use on deselected tabs
             bool m_mouseInWidget;                                   //! tracks whether the mouse is tracked inside the widget
 
-            Nedrysoft::Utils::ThemeSupport *m_themeSupport;         //! theme support instance
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;         //! theme support instance
     };
 }
 #endif // NEDRYSOFT_RIBBONTABBAR_H

@@ -31,8 +31,11 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <memory>
 
 namespace Nedrysoft::Ribbon {
+    class RibbonButtonData;
+
     constexpr auto RibbonButtonDefaultIconWidth = 32;
     constexpr auto RibbonButtonDefaultIconHeight = 48;
     constexpr auto RibbonButtonDefaultFontSize = 10;
@@ -70,7 +73,8 @@ namespace Nedrysoft::Ribbon {
             auto updateStyleSheets(bool isDarkMode) -> void;
 
         private:
-            Nedrysoft::Utils::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            std::shared_ptr<RibbonButtonData> d;
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
 }
 

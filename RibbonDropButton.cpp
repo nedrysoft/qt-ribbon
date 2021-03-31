@@ -47,7 +47,7 @@ constexpr auto ThemeStylesheet = R"(
 Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
         QWidget(parent),
         m_iconSize(QSize(RibbonDropButtonDefaultIconWidth,RibbonDropButtonDefaultIconHeight)),
-        m_themeSupport(new Nedrysoft::Utils::ThemeSupport) {
+        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
 
     m_layout = new QVBoxLayout;
     m_mainButton = new QPushButton;
@@ -85,11 +85,11 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
 
     updateSizes();
 
-    connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheets(isDarkMode);
     });
 
-    updateStyleSheets(Nedrysoft::Utils::ThemeSupport::isDarkMode());
+    updateStyleSheets(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonDropButton::~RibbonDropButton() {

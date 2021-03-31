@@ -44,13 +44,13 @@ constexpr auto ThemeStylesheet = R"(
 
 Nedrysoft::Ribbon::RibbonToolButton::RibbonToolButton(QWidget *parent) :
         QToolButton(parent),
-        m_themeSupport(new Nedrysoft::Utils::ThemeSupport) {
+        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
 
-    connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
     });
 
-    updateStyleSheet(Nedrysoft::Utils::ThemeSupport::isDarkMode());
+    updateStyleSheet(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonToolButton::~RibbonToolButton() {

@@ -53,7 +53,7 @@ constexpr auto ThemeStylesheet = R"(
 
 Nedrysoft::Ribbon::RibbonButton::RibbonButton(QWidget *parent) :
         QPushButton(parent),
-        m_themeSupport(new Nedrysoft::Utils::ThemeSupport) {
+        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
 
     auto fontManager = RibbonFontManager::getInstance();
 
@@ -63,11 +63,11 @@ Nedrysoft::Ribbon::RibbonButton::RibbonButton(QWidget *parent) :
 
     setFlat(true);
 
-    connect(m_themeSupport, &Nedrysoft::Utils::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheets(isDarkMode);
     });
 
-    updateStyleSheets(Nedrysoft::Utils::ThemeSupport::isDarkMode());
+    updateStyleSheets(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonButton::~RibbonButton() {
@@ -79,7 +79,7 @@ Nedrysoft::Ribbon::RibbonButton::~RibbonButton() {
 auto Nedrysoft::Ribbon::RibbonButton::updateStyleSheets(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
-    styleSheet.replace("[background-colour]", Nedrysoft::Utils::ThemeSupport::getColor(Nedrysoft::Ribbon::PushButtonColor).name());
+    styleSheet.replace("[background-colour]", Nedrysoft::ThemeSupport::ThemeSupport::getColor(Nedrysoft::Ribbon::PushButtonColor).name());
 
     if (isDarkMode) {
         styleSheet.replace("[normal-background-colour]", "#434343");
