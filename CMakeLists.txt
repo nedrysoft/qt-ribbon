@@ -69,10 +69,6 @@ set(library_SOURCES
     RibbonWidget.h
 )
 
-if(APPLE)
-    list(APPEND library_SOURCES ThemeSupport.mm)
-endif()
-
 add_library(${PROJECT_NAME} SHARED
     ${library_SOURCES}
 )
@@ -85,11 +81,11 @@ if(APPLE)
     target_link_libraries(${PROJECT_NAME} stdc++ objc)
 endif()
 
-target_link_libraries(${PROJECT_NAME} "Qt5::Core" "Qt5::Widgets")
-target_link_libraries(${PROJECT_NAME} "ThemeSupport")
+target_link_directories(${PROJECT_NAME} PRIVATE ${NEDRYSOFT_THEMESUPPORT_LIBRARY_DIR})
 
-target_include_directories(${PROJECT_NAME} PRIVATE "${PINGNOO_LIBRARIES_SOURCE_DIR}/ThemeSupport/includes")
+target_link_libraries(${PROJECT_NAME} "Qt5::Core" "Qt5::Widgets" "ThemeSupport")
 
+target_include_directories(${PROJECT_NAME} PRIVATE "${NEDRYSOFT_THEMESUPPORT_INCLUDE_DIR}")
 
 if(DEFINED NEDRYSOFT_RIBBON_LIBRARY_DIR)
     set_target_properties(${PROJECT_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${NEDRYSOFT_RIBBON_LIBRARY_DIR}")
@@ -133,9 +129,13 @@ if(NEDRYSOFT_RIBBON_BUILD_DESIGNER_PLUGIN)
         RibbonWidgetsCollection.h
         RibbonWidgetPlugin.cpp
         RibbonWidgetPlugin.h
-    )
+        )
 
-    target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::UiPlugin)
+    target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::UiPlugin "ThemeSupport")
+
+    target_link_directories(${PROJECT_NAME} PRIVATE ${NEDRYSOFT_THEMESUPPORT_LIBRARY_DIR})
+
+    target_include_directories(${PROJECT_NAME} PRIVATE "${NEDRYSOFT_THEMESUPPORT_INCLUDE_DIR}")
 
     if(APPLE)
         target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")

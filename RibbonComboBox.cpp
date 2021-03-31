@@ -73,7 +73,7 @@ auto Nedrysoft::Ribbon::RibbonComboBox::updateStyleSheet(bool isDarkMode) -> voi
     QString styleSheet(ThemeStylesheet);
 
 #if defined(Q_OS_MACOS)
-    styleSheet.replace("[selected-background-colour]", Nedrysoft::Utils::ThemeSupport::getHighlightedBackground().name());
+    styleSheet.replace("[selected-background-colour]", Nedrysoft::ThemeSupport::ThemeSupport::getHighlightedBackground().name());
 #else
     styleSheet.replace("[selected-background-colour]", this->palette().highlight().color().name());
 #endif
