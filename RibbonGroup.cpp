@@ -32,6 +32,12 @@
 #include <QPainter>
 #include <QRegularExpression>
 
+#if defined(Q_OS_WINDOWS)
+constexpr auto TitleAdjustment = -4;
+#else
+constexpr auto TitleAdjustment = 0;
+#endif
+
 Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
         QWidget(parent),
         m_fontMetrics(QFont()) {
@@ -77,7 +83,7 @@ auto Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) -> void {
 
     textRect.setBottom(rect().bottom());
 
-    painter.drawText(textRect, m_groupName, Qt::AlignBottom | Qt::AlignHCenter);
+    painter.drawText(textRect.adjusted(0, 0, 0, TitleAdjustment), m_groupName, Qt::AlignBottom | Qt::AlignHCenter);
 
     painter.setClipRect(event->rect());
 
