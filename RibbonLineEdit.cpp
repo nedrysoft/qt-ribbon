@@ -44,6 +44,7 @@ constexpr auto ThemeStylesheet = R"(
 )";
 
 constexpr auto lineEditHeightAdjustment = 2;
+constexpr auto WidgetHeight = 21;
 
 Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
         QTextEdit(parent),
@@ -72,21 +73,36 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    static int minimumLineHeight = 0;
-
-    if (!minimumLineHeight) {
-        QLineEdit lineEdit;
-
-        minimumLineHeight = lineEdit.minimumSizeHint().height()+lineEditHeightAdjustment;
-    }
-
-    setSizePolicy(sizePolicy().horizontalPolicy(), QSizePolicy::Fixed);
-
-    setFixedHeight(minimumLineHeight);
-
     if (placeholderText().isEmpty()) {
         setPlaceholderText(" ");
     }
+
+    QTextEdit::setMinimumHeight(WidgetHeight);
+    QTextEdit::setMaximumHeight(WidgetHeight);
+
+    QTextEdit::setSizePolicy(sizePolicy().horizontalPolicy(), QSizePolicy::Fixed);
+}
+
+void Nedrysoft::Ribbon::RibbonLineEdit::setMinimumHeight(int minimumHeight) {
+    Q_UNUSED(minimumHeight)
+
+    QTextEdit::setMinimumHeight(WidgetHeight);
+}
+
+void Nedrysoft::Ribbon::RibbonLineEdit::setMaximumHeight(int maximumHeight) {
+    Q_UNUSED(maximumHeight)
+
+    QTextEdit::setMaximumHeight(WidgetHeight);
+}
+
+void Nedrysoft::Ribbon::RibbonLineEdit::setSizePolicy(QSizePolicy policy) {
+    QTextEdit::setSizePolicy(policy.horizontalPolicy(), QSizePolicy::Fixed);
+}
+
+void Nedrysoft::Ribbon::RibbonLineEdit::setSizePolicy(QSizePolicy::Policy horizontal, QSizePolicy::Policy vertical) {
+    Q_UNUSED(vertical)
+
+    QTextEdit::setSizePolicy(horizontal, QSizePolicy::Fixed);
 }
 
 auto Nedrysoft::Ribbon::RibbonLineEdit::event(QEvent *e) -> bool {

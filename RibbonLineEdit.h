@@ -55,6 +55,47 @@ namespace Nedrysoft::Ribbon {
              */
             ~RibbonLineEdit() override;
 
+            /**
+             * @brief       Reimplements QWidget::setMinimumHeight(int minimumHeight)
+             *
+             * @note        This hides the superclasses implemention as the ribbon line edit has a fixed height and
+             *              we ignore any attempts to set it.
+             *
+             * @param[in]   minimumHeight the minimum height for the widget.
+             */
+            void setMinimumHeight(int minimumHeight);
+
+            /**
+             * @brief       Reimplements QWidget::setMaximumHeight(int maximumHeight)
+             *
+             * @note        This hides the superclasses implemention as the ribbon line edit has a fixed height and
+             *              we ignore any attempts to set it.
+             *
+             * @param[in]   minimumHeight the maximum height for the widget.
+             */
+            void setMaximumHeight(int maximumHeight);
+
+            /**
+             * @brief       Reimplements QWidget::setSizePolicy(QSizePolicy::Policy horizontal, QSizePolicy::Policy vertical)
+             *
+             * @note        This hides the superclasses implemention as the ribbon line edit has a fixed height and
+             *              we ignore any attempts to set it.
+             *
+             * @param[in]   horizontal the horizontal size policy.
+             * @param[in]   vertical the vertical size policy.
+             */
+            void setSizePolicy(QSizePolicy::Policy horizontal, QSizePolicy::Policy vertical);
+
+            /**
+             * @brief       Reimplements QWidget::setSizePolicy(QSizePolicy policy)
+             *
+             * @note        This hides the superclasses implemention as the ribbon line edit has a fixed height and
+             *              we ignore any attempts to set it.
+             *
+             * @param[in]   policy the size policy.
+             */
+            void setSizePolicy(QSizePolicy policy);
+
         protected:
             /**
              * @brief       Reimplements QTextEdit::resizeEvent(QResizeEvent *event)
