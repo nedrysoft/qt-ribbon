@@ -30,7 +30,7 @@
 #include <QFont>
 #include <QTabBar>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     class RibbonFontManager;
 
     /**
@@ -100,5 +100,6 @@ namespace Nedrysoft::Ribbon {
 
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;         //! theme support instance
     };
-}
+}}
+
 #endif // NEDRYSOFT_RIBBONTABBAR_H

@@ -33,7 +33,7 @@
 #include <QWidget>
 #include <memory>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     class RibbonButtonData;
 
     constexpr auto RibbonButtonDefaultIconWidth = 32;
@@ -76,6 +76,6 @@ namespace Nedrysoft::Ribbon {
             std::shared_ptr<RibbonButtonData> d;
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONBUTTON_H

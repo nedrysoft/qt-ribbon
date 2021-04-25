@@ -30,7 +30,7 @@
 #include <QLineEdit>
 #include <QTextEdit>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     /**
      * @brief       The RibbonLineEdit widget provides a ribbon stylised line edit.
      *
@@ -134,6 +134,6 @@ namespace Nedrysoft::Ribbon {
         private:
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;                 //! theme support instance
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONLINEDIT_H

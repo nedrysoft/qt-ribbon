@@ -29,7 +29,7 @@
 
 #include <QToolButton>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     /**
      * @brief       The RibbonToolButton widget provides a ribbon stylised push button with icon and optional text.
      *
@@ -65,6 +65,6 @@ namespace Nedrysoft::Ribbon {
         private:
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONTOOLBUTTON_H

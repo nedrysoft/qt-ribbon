@@ -30,7 +30,7 @@
 #include <QMap>
 #include <QWidget>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     constexpr auto RibbonGroupHorizontalMargins = 12;
 #if defined(Q_OS_MACOS)
     constexpr int RibbonGroupDefaultFontSize = 10;
@@ -91,6 +91,6 @@ namespace Nedrysoft::Ribbon {
             QFontMetrics m_fontMetrics;                             //! The font metrics of the selected font
             QRect m_textRect;                                       //! The rectangle of the group name in the selected font
     };
-}
+}}
 
 #endif // NEDRYSOFT_RIBBONGROUP_H

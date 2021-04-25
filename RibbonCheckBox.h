@@ -29,7 +29,7 @@
 
 #include <QCheckBox>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     /**
      * @brief       The RibbonCheckBox widget provides a ribbon stylised check box.
      *
@@ -65,6 +65,6 @@ namespace Nedrysoft::Ribbon {
         private:
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;                 //! theme support instance
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONCHECKBOX_H

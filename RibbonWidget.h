@@ -30,7 +30,7 @@
 #include <QMetaProperty>
 #include <QTabWidget>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     class RibbonTabBar;
 
     /**
@@ -150,6 +150,6 @@ namespace Nedrysoft::Ribbon {
         private:
             Nedrysoft::Ribbon::RibbonTabBar *m_tabBar;                                  //! The tab bar associated with this ribbon
     };
-}
+}}
 
 #endif // NEDRYSOFT_RIBBONWIDGET_H

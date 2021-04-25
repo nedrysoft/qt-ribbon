@@ -29,7 +29,7 @@
 
 #include <QSlider>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     /**
      * @brief       The RibbonSlider widget provides a ribbon stylised slider.
      *
@@ -65,6 +65,6 @@ namespace Nedrysoft::Ribbon {
         private:
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;                 //! theme support instance
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONSLIDER_H

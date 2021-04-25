@@ -31,7 +31,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     constexpr auto RibbonDropButtonDefaultIconWidth = 32;
     constexpr auto RibbonDropButtonDefaultIconHeight = 48;
     constexpr auto RibbonDropButtonDefaultHeight = 16;
@@ -122,6 +122,6 @@ namespace Nedrysoft::Ribbon {
             QSize m_iconSize;                                   //! the size of the icon
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! theme support instance
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONDROPBUTTON_H

@@ -28,7 +28,7 @@
 
 #include <QString>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     /**
      * @brief           The RibbonFont manager provides access to the system UI font.
      *
@@ -82,6 +82,6 @@ namespace Nedrysoft::Ribbon {
             int m_regularFontId;                                                //! Regular font id after loading
             int m_boldFontId;                                                   //! Bold font id after loading
     };
-}
+}}
 
 #endif // NEDRYSOFT_RIBBONFONTMANAGER_H

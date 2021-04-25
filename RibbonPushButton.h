@@ -32,7 +32,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-namespace Nedrysoft::Ribbon {
+namespace Nedrysoft { namespace Ribbon {
     constexpr auto RibbonPushButtonDefaultIconWidth = 32;
     constexpr auto RibbonPushButtonDefaultIconHeight = 48;
     constexpr auto RibbonPushButtonDefaultFontSize = 10;
@@ -145,6 +145,6 @@ namespace Nedrysoft::Ribbon {
             QSize m_iconSize;                                   //! the size of the icon
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
-}
+}}
 
 #endif //NEDRYSOFT_RIBBONPUSHBUTTON_H
