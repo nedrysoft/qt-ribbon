@@ -80,7 +80,32 @@ add_library(${PROJECT_NAME} SHARED
     ${library_SOURCES}
 )
 
-find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+# discover which Qt version is available
+
+if (USE_QT_VERSION)
+    set(QT_VERSION_MAJOR ${USE_QT_VERSION})
+else()
+    find_package(Qt6 COMPONENTS Core QUIET)
+    find_package(Qt5 COMPONENTS Core QUIET)
+
+    if (Qt6_FOUND)
+        set(QT_VERSION_MAJOR 6)
+    elseif(Qt5_FOUND)
+        set(QT_VERSION_MAJOR 5)
+    else()
+        message(FATAL_ERROR, "No valid Qt version was set, and none could be found")
+    endif()
+endif()
+
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core QUIET)
+
+if (NOT Qt${QT_VERSION_MAJOR}_FOUND)
+    message(FATAL_ERROR, "No valid Qt version was set, and none could be found")
+endif()
+
+# end of qt selection/detection
+
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
 
 if(APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")
@@ -90,7 +115,7 @@ endif()
 
 target_link_directories(${PROJECT_NAME} PRIVATE ${NEDRYSOFT_THEMESUPPORT_LIBRARY_DIR})
 
-target_link_libraries(${PROJECT_NAME} "Qt5::Core" "Qt5::Widgets" "ThemeSupport")
+target_link_libraries(${PROJECT_NAME} "Qt${QT_VERSION_MAJOR}::Core" "Qt${QT_VERSION_MAJOR}::Widgets" "ThemeSupport")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${NEDRYSOFT_THEMESUPPORT_INCLUDE_DIR}")
 
@@ -138,7 +163,7 @@ if(NEDRYSOFT_RIBBON_BUILD_DESIGNER_PLUGIN)
         RibbonWidgetPlugin.h
         )
 
-    target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::UiPlugin "ThemeSupport")
+    target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::UiPlugin "ThemeSupport")
 
     target_link_directories(${PROJECT_NAME} PRIVATE ${NEDRYSOFT_THEMESUPPORT_LIBRARY_DIR})
 
