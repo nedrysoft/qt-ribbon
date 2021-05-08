@@ -52,15 +52,32 @@ Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
     this->setStyleSheet(QString("font: %1pt \"%2\"").arg(m_font.pointSize()).arg(m_font.family()));
 
     setGroupName(QString("Group"));
-
+#if (QT_VERSION_MAJOR<6)
     connect(qobject_cast<QApplication *>(QCoreApplication::instance()), &QApplication::paletteChanged, [=] (const QPalette &) {
         // TODO: anything to do?
     });
-
+#endif
     updateMargins();
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 }
+
+#if (QT_VERSION_MAJOR>=6)
+bool Nedrysoft::Ribbon::RibbonGroup::event(QEvent *event) {
+    switch(event->type()) {
+        case QEvent::ApplicationPaletteChange: {
+            // TODO: anything to do?
+            break;
+        }
+
+        default: {
+            break;
+        }
+    }
+
+    return false;
+}
+#endif
 
 auto Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) -> void {
     QPainter painter(this);

@@ -75,8 +75,11 @@ auto Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *even
         case QEvent::Enter: {
             auto enterEvent = reinterpret_cast<QEnterEvent *>(event);
 
+#if (QT_VERSION_MAJOR>=6)
+            lastTabIndex = tabAt(enterEvent->position().toPoint());
+#else
             lastTabIndex = tabAt(enterEvent->pos());
-
+#endif
             m_mouseInWidget = true;
 
             update();
@@ -97,10 +100,15 @@ auto Nedrysoft::Ribbon::RibbonTabBar::eventFilter(QObject *watched, QEvent *even
         case QEvent::MouseMove: {
             auto mouseEvent = reinterpret_cast<QMouseEvent *>(event);
 
-            if (lastTabIndex != tabAt(mouseEvent->pos())) {
+#if (QT_VERSION_MAJOR>=6)
+            QPoint mousePosition = mouseEvent->position().toPoint();
+#else
+            QPoint mousePosition = mouseEvent->pos();
+#endif
+            if (lastTabIndex != tabAt(mousePosition)) {
                 update();
 
-                lastTabIndex = tabAt(mouseEvent->pos());
+                lastTabIndex = tabAt(mousePosition);
             }
 
             break;

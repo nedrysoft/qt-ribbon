@@ -85,6 +85,15 @@ namespace Nedrysoft { namespace Ribbon {
              */
             auto paintEvent(QPaintEvent *event) -> void override;
 
+            /**
+             * @brief       Reimplements: QWidget::event(QEvent *event).
+             *
+             * @param[in]   event the event information.
+             *
+             * @returns     true if the event was handled; otherwise false.
+             */
+            auto event(QEvent *event) -> bool override;
+
         private:
             QString m_groupName;                                    //! Group name that is displayed
             QFont m_font;                                           //! Font used to draw the group name
