@@ -62,11 +62,12 @@ Nedrysoft::Ribbon::RibbonGroup::RibbonGroup(QWidget *parent) :
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 }
 
-#if (QT_VERSION_MAJOR>=6)
 bool Nedrysoft::Ribbon::RibbonGroup::event(QEvent *event) {
     switch(event->type()) {
         case QEvent::ApplicationPaletteChange: {
+#if (QT_VERSION_MAJOR>=6)
             // TODO: anything to do?
+#endif
             break;
         }
 
@@ -77,7 +78,6 @@ bool Nedrysoft::Ribbon::RibbonGroup::event(QEvent *event) {
 
     return false;
 }
-#endif
 
 auto Nedrysoft::Ribbon::RibbonGroup::paintEvent(QPaintEvent *event) -> void {
     QPainter painter(this);
