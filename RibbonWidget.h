@@ -24,6 +24,8 @@
 #ifndef NEDRYSOFT_RIBBONWIDGET_H
 #define NEDRYSOFT_RIBBONWIDGET_H
 
+#include <QtGlobal>
+
 #include "RibbonSpec.h"
 
 #include <QHBoxLayout>

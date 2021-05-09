@@ -24,6 +24,8 @@
 #ifndef NEDRYSOFT_RIBBONGROUP_H
 #define NEDRYSOFT_RIBBONGROUP_H
 
+#include <QtGlobal>
+
 #include "RibbonSpec.h"
 
 #include <QFontMetrics>
