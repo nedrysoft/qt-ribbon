@@ -32,14 +32,14 @@
 
 constexpr auto ThemeStylesheet = R"(
     QTextEdit {
-        background-color: [background-colour];
+        [background-colour];
         height: 13px;
-        border: 0px solid [border-colour];
+        [border];
         padding: 0px;
     }
 
     QTextEdit:focus {
-        border-color: [border-colour];
+        [border];
     }
 )";
 
@@ -81,6 +81,17 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     QTextEdit::setMaximumHeight(WidgetHeight);
 
     QTextEdit::setSizePolicy(sizePolicy().horizontalPolicy(), QSizePolicy::Fixed);
+
+    QPalette palette = QTextEdit::palette();
+
+    if (m_themeSupport->isDarkMode()) {
+        palette.setColor(QPalette::PlaceholderText, QColor(Qt::darkGray).lighter(125));
+    } else {
+        palette.setColor(QPalette::PlaceholderText, Qt::darkGray);
+    }
+
+    setPalette(palette);
+
 }
 
 void Nedrysoft::Ribbon::RibbonLineEdit::setMinimumHeight(int minimumHeight) {
@@ -144,12 +155,12 @@ Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
 auto Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
 
+    styleSheet.replace("[border]", "border: 0px none");
+
     if (isDarkMode) {
-        styleSheet.replace("[background-colour]", "#434343");
-        styleSheet.replace("[border-colour]", "none");
+        styleSheet.replace("[background-colour]", "background-color: #434343");
     } else {
-        styleSheet.replace("[background-colour]", "#ffffff");
-        styleSheet.replace("[border-colour]", "#B9B9B9");
+        styleSheet.replace("[background-colour]", "background-color: #ffffff");
     }
 
     setStyleSheet(styleSheet);
