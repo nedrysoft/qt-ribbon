@@ -115,6 +115,8 @@ endif()
 
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
 
+set(Qt_LIBS "Qt${QT_VERSION_MAJOR}::Core" "Qt${QT_VERSION_MAJOR}::Widgets")
+
 if(APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework AppKit" "-framework Cocoa")
 
@@ -123,7 +125,7 @@ endif()
 
 target_link_directories(${PROJECT_NAME} PRIVATE ${NEDRYSOFT_THEMESUPPORT_LIBRARY_DIR})
 
-target_link_libraries(${PROJECT_NAME} "Qt${QT_VERSION_MAJOR}::Core" "Qt${QT_VERSION_MAJOR}::Widgets" "ThemeSupport")
+target_link_libraries(${PROJECT_NAME} ${Qt_LIBS} "ThemeSupport")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${NEDRYSOFT_THEMESUPPORT_INCLUDE_DIR}")
 
