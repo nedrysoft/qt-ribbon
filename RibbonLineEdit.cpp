@@ -43,7 +43,6 @@ constexpr auto ThemeStylesheet = R"(
     }
 )";
 
-constexpr auto lineEditHeightAdjustment = 2;
 constexpr auto WidgetHeight = 21;
 
 Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
