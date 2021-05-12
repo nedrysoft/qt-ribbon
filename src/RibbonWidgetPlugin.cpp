@@ -21,19 +21,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "RibbonGroupPlugin.h"
-#include "RibbonGroup.h"
+#include "RibbonWidgetPlugin.h"
+
 #include "RibbonWidget.h"
 
 #include <QtPlugin>
 
 constexpr auto ConfigurationXML = R"(
-    <ui language="c++" displayname="Ribbon Group">
-        <widget class="Nedrysoft::Ribbon::RibbonGroup" name="ribbonGroup">
-            <property name="groupName">
-                <string>Group</string>
-            </property>
-        
+    <ui language="c++" displayname="Ribbon Widget">
+        <widget class="Nedrysoft::Ribbon::RibbonWidget" name="ribbonWidget">
             <property name="geometry">
                 <rect>
                     <x>0</x>
@@ -46,13 +42,13 @@ constexpr auto ConfigurationXML = R"(
     </ui>
 )";
 
-RibbonGroupPlugin::RibbonGroupPlugin(QObject *parent) :
-        QObject(parent),
-        m_initialized(false) {
+RibbonWidgetPlugin::RibbonWidgetPlugin(QObject *parent) :
+        QObject(parent) {
 
+    qRegisterMetaType<RibbonWidgetPlugin *>("RibbonWidgetPlugin");
 }
 
-void RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) {
+void RibbonWidgetPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -62,44 +58,44 @@ void RibbonGroupPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonGroupPlugin::isInitialized() const {
+bool RibbonWidgetPlugin::isInitialized() const {
     return m_initialized;
 }
 
-QWidget *RibbonGroupPlugin::createWidget(QWidget *parent) {
-    return new Nedrysoft::Ribbon::RibbonGroup(parent);
+QWidget * RibbonWidgetPlugin::createWidget(QWidget *parent) {
+    return new Nedrysoft::Ribbon::RibbonWidget(parent);
 }
 
-QString RibbonGroupPlugin::name() const {
-    return QStringLiteral("Nedrysoft::Ribbon::RibbonGroup");
+QString RibbonWidgetPlugin::name() const {
+    return QStringLiteral("Nedrysoft::Ribbon::RibbonWidget");
 }
 
-QString RibbonGroupPlugin::group() const {
+QString RibbonWidgetPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonGroupPlugin::icon() const {
+QIcon RibbonWidgetPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonGroupPlugin::toolTip() const {
-    return tr("A Ribbon Group");
+QString RibbonWidgetPlugin::toolTip() const {
+    return tr("A Ribbon Widget");
 }
 
-QString RibbonGroupPlugin::whatsThis() const {
-    return tr("The Ribbon Group is a container that contains a set of controls that are logically grouped together.");
+QString RibbonWidgetPlugin::whatsThis() const {
+    return tr("The Ribbon Widget is the top level container of the Ribbon Bar.");
 }
 
-bool RibbonGroupPlugin::isContainer() const {
-    return true;
+bool RibbonWidgetPlugin::isContainer() const {
+    return false;
 }
 
-QString RibbonGroupPlugin::domXml() const {
+QString RibbonWidgetPlugin::domXml() const {
     return QString(ConfigurationXML)
             .replace("[default-width]", QString::number(Nedrysoft::Ribbon::RibbonBarDefaultWidth))
             .replace("[default-height]", QString::number(Nedrysoft::Ribbon::RibbonBarHeight));
 }
 
-QString RibbonGroupPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonGroup.h");
+QString RibbonWidgetPlugin::includeFile() const {
+    return QStringLiteral("<RibbonWidget>");
 }

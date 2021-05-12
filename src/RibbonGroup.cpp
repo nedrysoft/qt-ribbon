@@ -25,12 +25,12 @@
 
 #include "RibbonFontManager.h"
 #include "RibbonWidget.h"
-#include "ThemeSupport.h"
 
 #include <QApplication>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QRegularExpression>
+#include <ThemeSupport>
 
 #if defined(Q_OS_WINDOWS)
 constexpr auto TitleAdjustment = -4;

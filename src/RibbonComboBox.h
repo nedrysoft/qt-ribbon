@@ -21,38 +21,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NEDRYSOFT_RIBBONCHECKBOX_H
-#define NEDRYSOFT_RIBBONCHECKBOX_H
+#ifndef NEDRYSOFT_RIBBONCOMBOBOX_H
+#define NEDRYSOFT_RIBBONCOMBOBOX_H
 
 #include "RibbonSpec.h"
-#include "ThemeSupport.h"
 
-#include <QCheckBox>
+#include <QComboBox>
+#include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
     /**
-     * @brief       The RibbonCheckBox widget provides a ribbon stylised check box.
+     * @brief       The RibbonComboBox widget provides a ribbon stylised check box.
      *
-     * @details     A CheckBox widget that is styled to match the RibbonBar.
+     * @details     A ComboBox widget that is styled to match the RibbonBar.
      */
-    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonCheckBox :
-            public QCheckBox {
+    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonComboBox :
+            public QComboBox {
 
         private:
             Q_OBJECT
 
         public:
             /**
-             * @brief       Constructs a new RibbonCheckBox instance which is a child of the parent.
+             * @brief       Constructs a new RibbonComboBox instance which is a child of the parent.
              *
              * @param[in]   parent the owner widget.
              */
-            explicit RibbonCheckBox(QWidget *parent=nullptr);
+            explicit RibbonComboBox(QWidget *parent=nullptr);
 
             /**
-             * @brief       Destroys the RibbonCheckBox.
+             * @brief       Destroys the RibbonComboBox.
              */
-            ~RibbonCheckBox() override;
+            ~RibbonComboBox() override;
 
         private:
             /**
@@ -67,4 +67,4 @@ namespace Nedrysoft { namespace Ribbon {
     };
 }}
 
-#endif //NEDRYSOFT_RIBBONCHECKBOX_H
+#endif //NEDRYSOFT_RIBBONCOMBOBOX_H

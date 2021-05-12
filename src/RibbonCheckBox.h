@@ -21,38 +21,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NEDRYSOFT_RIBBONSLIDER_H
-#define NEDRYSOFT_RIBBONSLIDER_H
+#ifndef NEDRYSOFT_RIBBONCHECKBOX_H
+#define NEDRYSOFT_RIBBONCHECKBOX_H
 
 #include "RibbonSpec.h"
-#include "ThemeSupport.h"
 
-#include <QSlider>
+#include <QCheckBox>
+#include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
     /**
-     * @brief       The RibbonSlider widget provides a ribbon stylised slider.
+     * @brief       The RibbonCheckBox widget provides a ribbon stylised check box.
      *
-     * @details     A Slider widget that is styled to match the RibbonBar.
+     * @details     A CheckBox widget that is styled to match the RibbonBar.
      */
-    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonSlider :
-            public QSlider {
+    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonCheckBox :
+            public QCheckBox {
 
         private:
             Q_OBJECT
 
         public:
             /**
-             * @brief       Constructs a new RibbonSlider instance which is a child of the parent.
+             * @brief       Constructs a new RibbonCheckBox instance which is a child of the parent.
              *
              * @param[in]   parent the owner widget.
              */
-            explicit RibbonSlider(QWidget *parent=nullptr);
+            explicit RibbonCheckBox(QWidget *parent=nullptr);
 
             /**
-             * @brief       Destroys the RibbonSlider.
+             * @brief       Destroys the RibbonCheckBox.
              */
-            ~RibbonSlider() override;
+            ~RibbonCheckBox() override;
 
         private:
             /**
@@ -67,4 +67,4 @@ namespace Nedrysoft { namespace Ribbon {
     };
 }}
 
-#endif //NEDRYSOFT_RIBBONSLIDER_H
+#endif //NEDRYSOFT_RIBBONCHECKBOX_H

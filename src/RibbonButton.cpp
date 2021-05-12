@@ -28,14 +28,9 @@
 #include "RibbonFontManager.h"
 #include "RibbonWidget.h"
 
-#if defined(Q_OS_MACOS)
-#include "ThemeSupport.h"
-#endif
-
 #include <QApplication>
 #include <QStyle>
-
-#include <QDebug>
+#include <ThemeSupport>
 
 constexpr auto ThemeStylesheet = R"(
     QPushButton {

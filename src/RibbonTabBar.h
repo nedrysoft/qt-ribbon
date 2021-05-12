@@ -25,10 +25,10 @@
 #define NEDRYSOFT_RIBBONTABBAR_H
 
 #include "RibbonSpec.h"
-#include "ThemeSupport.h"
 
 #include <QFont>
 #include <QTabBar>
+#include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
     class RibbonFontManager;

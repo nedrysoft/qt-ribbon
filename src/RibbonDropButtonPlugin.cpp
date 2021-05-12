@@ -86,5 +86,5 @@ QString RibbonDropButtonPlugin::domXml() const {
 }
 
 QString RibbonDropButtonPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonDropButton.h");
+    return QStringLiteral("<RibbonDropButton>");
 }

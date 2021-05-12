@@ -5,7 +5,7 @@
  *
  * A cross-platform ribbon bar for Qt applications.
  *
- * Created by Adrian Carpenter on 12/12/2020.
+ * Created by Adrian Carpenter on 02/12/2020.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,61 +21,50 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NEDRYSOFT_RIBBONBUTTON_H
-#define NEDRYSOFT_RIBBONBUTTON_H
+#ifndef NEDRYSOFT_RIBBONTOOLBUTTON_H
+#define NEDRYSOFT_RIBBONTOOLBUTTON_H
 
 #include "RibbonSpec.h"
-#include "ThemeSupport.h"
 
-#include <QLabel>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QWidget>
-#include <memory>
+#include <QToolButton>
+#include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
-    class RibbonButtonData;
-
-    constexpr auto RibbonButtonDefaultIconWidth = 32;
-    constexpr auto RibbonButtonDefaultIconHeight = 48;
-    constexpr auto RibbonButtonDefaultFontSize = 10;
-
     /**
-     * @brief       The RibbonButton widget provides a ribbon stylised push button with icon and optional text.
+     * @brief       The RibbonToolButton widget provides a ribbon stylised push button with icon and optional text.
      *
-     * @details     A Button widget that is styled to match the RibbonBar.
+     * @details     A ToolButton widget that is styled to match the RibbonBar.
      */
-    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonButton :
-            public QPushButton {
+    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonToolButton :
+            public QToolButton {
 
         private:
             Q_OBJECT
 
         public:
             /**
-             * @brief       Constructs a new RibbonButton instance which is a child of the parent.
+             * @brief       Constructs a new RibbonToolButton instance which is a child of the parent.
              *
              * @param[in]   parent the owner widget.
              */
-            explicit RibbonButton(QWidget *parent=nullptr);
+            explicit RibbonToolButton(QWidget *parent=nullptr);
 
             /**
-             * @brief       Destroys the RibbonButton.
+             * @brief       Destroys the RibbonToolButton.
              */
-            ~RibbonButton() override;
+            ~RibbonToolButton() override;
 
         private:
             /**
-             * @brief       Updates the child widgets stylesheets when the operating system theme is changed.
+             * @brief       Updates the stylesheet when the operating system theme is changed.
              *
              * @param[in]   isDarkMode true if dark mode; otherwise false.
              */
-            auto updateStyleSheets(bool isDarkMode) -> void;
+            auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
-            std::shared_ptr<RibbonButtonData> d;
             Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
     };
 }}
 
-#endif //NEDRYSOFT_RIBBONBUTTON_H
+#endif //NEDRYSOFT_RIBBONTOOLBUTTON_H

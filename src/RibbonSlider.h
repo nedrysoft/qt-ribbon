@@ -21,38 +21,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NEDRYSOFT_RIBBONTOOLBUTTON_H
-#define NEDRYSOFT_RIBBONTOOLBUTTON_H
+#ifndef NEDRYSOFT_RIBBONSLIDER_H
+#define NEDRYSOFT_RIBBONSLIDER_H
 
 #include "RibbonSpec.h"
-#include "ThemeSupport.h"
 
-#include <QToolButton>
+#include <QSlider>
+#include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
     /**
-     * @brief       The RibbonToolButton widget provides a ribbon stylised push button with icon and optional text.
+     * @brief       The RibbonSlider widget provides a ribbon stylised slider.
      *
-     * @details     A ToolButton widget that is styled to match the RibbonBar.
+     * @details     A Slider widget that is styled to match the RibbonBar.
      */
-    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonToolButton :
-            public QToolButton {
+    class NEDRYSOFT_RIBBON_WIDGET_EXPORT RibbonSlider :
+            public QSlider {
 
         private:
             Q_OBJECT
 
         public:
             /**
-             * @brief       Constructs a new RibbonToolButton instance which is a child of the parent.
+             * @brief       Constructs a new RibbonSlider instance which is a child of the parent.
              *
              * @param[in]   parent the owner widget.
              */
-            explicit RibbonToolButton(QWidget *parent=nullptr);
+            explicit RibbonSlider(QWidget *parent=nullptr);
 
             /**
-             * @brief       Destroys the RibbonToolButton.
+             * @brief       Destroys the RibbonSlider.
              */
-            ~RibbonToolButton() override;
+            ~RibbonSlider() override;
 
         private:
             /**
@@ -63,8 +63,8 @@ namespace Nedrysoft { namespace Ribbon {
             auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;                 //! theme support instance
     };
 }}
 
-#endif //NEDRYSOFT_RIBBONTOOLBUTTON_H
+#endif //NEDRYSOFT_RIBBONSLIDER_H

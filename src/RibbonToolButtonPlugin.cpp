@@ -91,5 +91,5 @@ QString RibbonToolButtonPlugin::domXml() const {
 }
 
 QString RibbonToolButtonPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonToolButton.h");
+    return QStringLiteral("<RibbonToolButton>");
 }

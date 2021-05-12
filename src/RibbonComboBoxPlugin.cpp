@@ -94,5 +94,5 @@ QString RibbonComboBoxPlugin::domXml() const {
 }
 
 QString RibbonComboBoxPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonComboBox.h");
+    return QStringLiteral("<RibbonComboBox>");
 }

@@ -94,5 +94,5 @@ QString RibbonLineEditPlugin::domXml() const {
 }
 
 QString RibbonLineEditPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonLineEdit.h");
+    return QStringLiteral("<RibbonLineEdit>");
 }

@@ -25,10 +25,10 @@
 #define NEDRYSOFT_RIBBONLINEDIT_H
 
 #include "RibbonSpec.h"
-#include "ThemeSupport.h"
 
 #include <QLineEdit>
 #include <QTextEdit>
+#include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
     /**

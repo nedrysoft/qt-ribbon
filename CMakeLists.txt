@@ -41,37 +41,37 @@ ADD_DEFINITIONS(-DNEDRYSOFT_LIBRARY_RIBBON_EXPORT)
 project(Ribbon)
 
 set(library_SOURCES
-    RibbonButton.cpp
-    RibbonButton.h
-    RibbonCheckBox.cpp
-    RibbonCheckBox.h
-    RibbonComboBox.cpp
-    RibbonComboBox.h
-    RibbonDropButton.cpp
-    RibbonDropButton.h
-    RibbonFontManager.cpp
-    RibbonFontManager.h
-    RibbonGroup.cpp
-    RibbonGroup.h
-    RibbonLineEdit.cpp
-    RibbonLineEdit.h
-    RibbonPushButton.cpp
-    RibbonPushButton.h
-    RibbonResources.qrc
-    RibbonSlider.cpp
-    RibbonSlider.h
-    RibbonSpec.h
-    RibbonTabBar.cpp
-    RibbonTabBar.h
-    RibbonToolButton.cpp
-    RibbonToolButton.h
-    RibbonWidget.cpp
-    RibbonWidget.h
+    src/RibbonButton.cpp
+    src/RibbonButton.h
+    src/RibbonCheckBox.cpp
+    src/RibbonCheckBox.h
+    src/RibbonComboBox.cpp
+    src/RibbonComboBox.h
+    src/RibbonDropButton.cpp
+    src/RibbonDropButton.h
+    src/RibbonFontManager.cpp
+    src/RibbonFontManager.h
+    src/RibbonGroup.cpp
+    src/RibbonGroup.h
+    src/RibbonLineEdit.cpp
+    src/RibbonLineEdit.h
+    src/RibbonPushButton.cpp
+    src/RibbonPushButton.h
+    src/RibbonResources.qrc
+    src/RibbonSlider.cpp
+    src/RibbonSlider.h
+    src/RibbonSpec.h
+    src/RibbonTabBar.cpp
+    src/RibbonTabBar.h
+    src/RibbonToolButton.cpp
+    src/RibbonToolButton.h
+    src/RibbonWidget.cpp
+    src/RibbonWidget.h
 )
 
 if(WIN32)
-    configure_file("Version.h.in" "Version.h")
-    list(APPEND library_SOURCES "version.rc")
+    configure_file("src/Version.h.in" "Version.h")
+    list(APPEND library_SOURCES "src/version.rc")
     add_definitions("-DNEDRYSOFT_MODULE_FILENAME=\"${PROJECT_NAME}.dll\"")
     add_definitions("-DNEDRYSOFT_MODULE_NAME=\"${PROJECT_NAME}\"")
 endif()
@@ -149,29 +149,29 @@ if(NEDRYSOFT_RIBBON_BUILD_DESIGNER_PLUGIN)
 
     add_library(${PROJECT_NAME} SHARED
         ${library_SOURCES}
-        RibbonButtonPlugin.cpp
-        RibbonButtonPlugin.h
-        RibbonCheckBoxPlugin.cpp
-        RibbonCheckBoxPlugin.h
-        RibbonComboBoxPlugin.cpp
-        RibbonComboBoxPlugin.h
-        RibbonDropButtonPlugin.cpp
-        RibbonDropButtonPlugin.h
-        RibbonGroupPlugin.cpp
-        RibbonGroupPlugin.h
-        RibbonLineEditPlugin.cpp
-        RibbonLineEditPlugin.h
-        RibbonPushButtonPlugin.cpp
-        RibbonPushButtonPlugin.h
-        RibbonSliderPlugin.cpp
-        RibbonSliderPlugin.h
-        RibbonToolButtonPlugin.cpp
-        RibbonToolButtonPlugin.h
-        RibbonWidgetsCollection.cpp
-        RibbonWidgetsCollection.h
-        RibbonWidgetPlugin.cpp
-        RibbonWidgetPlugin.h
-        )
+        src/RibbonButtonPlugin.cpp
+        src/RibbonButtonPlugin.h
+        src/RibbonCheckBoxPlugin.cpp
+        src/RibbonCheckBoxPlugin.h
+        src/RibbonComboBoxPlugin.cpp
+        src/RibbonComboBoxPlugin.h
+        src/RibbonDropButtonPlugin.cpp
+        src/RibbonDropButtonPlugin.h
+        src/RibbonGroupPlugin.cpp
+        src/RibbonGroupPlugin.h
+        src/RibbonLineEditPlugin.cpp
+        src/RibbonLineEditPlugin.h
+        src/RibbonPushButtonPlugin.cpp
+        src/RibbonPushButtonPlugin.h
+        src/RibbonSliderPlugin.cpp
+        src/RibbonSliderPlugin.h
+        src/RibbonToolButtonPlugin.cpp
+        src/RibbonToolButtonPlugin.h
+        src/RibbonWidgetsCollection.cpp
+        src/RibbonWidgetsCollection.h
+        src/RibbonWidgetPlugin.cpp
+        src/RibbonWidgetPlugin.h
+    )
 
     target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::UiPlugin "ThemeSupport")
 

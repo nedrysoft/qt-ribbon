@@ -21,30 +21,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "RibbonPushButtonPlugin.h"
+#include "RibbonCheckBoxPlugin.h"
+#include "RibbonCheckBox.h"
 
-#include "RibbonPushButton.h"
-
-#include <QRegularExpression>
 #include <QtPlugin>
 
 constexpr auto ConfigurationXML = R"(
-    <ui language="c++" displayname="Ribbon Push Button">
-        <widget class="Nedrysoft::Ribbon::RibbonPushButton" name="ribbonPushButton">
+    <ui language="c++" displayname="Ribbon Check Box">
+        <widget class="Nedrysoft::Ribbon::RibbonCheckBox" name="ribbonCheckBox">
             <property name="text">
-                <string>Button</string>
+                <string>CheckBox</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
             </property>
         </widget>
     </ui>
 )";
 
-RibbonPushButtonPlugin::RibbonPushButtonPlugin(QObject *parent) :
+RibbonCheckBoxPlugin::RibbonCheckBoxPlugin(QObject *parent) :
         QObject(parent),
         m_initialized(false) {
 
 }
 
-void RibbonPushButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
+void RibbonCheckBoxPlugin::initialize(QDesignerFormEditorInterface *core) {
     Q_UNUSED(core)
 
     if (m_initialized) {
@@ -54,42 +55,42 @@ void RibbonPushButtonPlugin::initialize(QDesignerFormEditorInterface *core) {
     m_initialized = true;
 }
 
-bool RibbonPushButtonPlugin::isInitialized() const {
+bool RibbonCheckBoxPlugin::isInitialized()  const {
     return m_initialized;
 }
 
-QWidget * RibbonPushButtonPlugin::createWidget(QWidget *parent) {
-    return new Nedrysoft::Ribbon::RibbonPushButton(parent);
+QWidget *RibbonCheckBoxPlugin::createWidget(QWidget *parent) {
+    return new Nedrysoft::Ribbon::RibbonCheckBox(parent);
 }
 
-QString RibbonPushButtonPlugin::name() const {
-    return QStringLiteral("Nedrysoft::Ribbon::RibbonPushButton");
+QString RibbonCheckBoxPlugin::name() const {
+    return QStringLiteral("Nedrysoft::Ribbon::RibbonCheckBox");
 }
 
-QString RibbonPushButtonPlugin::group() const {
+QString RibbonCheckBoxPlugin::group() const {
     return QStringLiteral("Nedrysoft Ribbon Widgets");
 }
 
-QIcon RibbonPushButtonPlugin::icon() const {
+QIcon RibbonCheckBoxPlugin::icon() const {
     return QIcon(":/Nedrysoft/Ribbon/icons/ribbon.png");
 }
 
-QString RibbonPushButtonPlugin::toolTip() const {
-    return tr("A Ribbon Push Button");
+QString RibbonCheckBoxPlugin::toolTip() const {
+    return tr("A Ribbon Check Box");
 }
 
-QString RibbonPushButtonPlugin::whatsThis() const {
-    return tr("The Ribbon Push Button is a control that provides a main push button with optional text and is styled to match the Ribbon.");
+QString RibbonCheckBoxPlugin::whatsThis() const {
+    return tr("The Ribbon Check Box is a QCheckBox subclass that is styled to match the Ribbon.");
 }
 
-bool RibbonPushButtonPlugin::isContainer() const {
-    return true;
+bool RibbonCheckBoxPlugin::isContainer()  const {
+    return false;
 }
 
-QString RibbonPushButtonPlugin::domXml() const {
+QString RibbonCheckBoxPlugin::domXml() const {
     return ConfigurationXML;
 }
 
-QString RibbonPushButtonPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonPushButton.h");
+QString RibbonCheckBoxPlugin::includeFile() const {
+    return QStringLiteral("<RibbonCheckBox>");
 }

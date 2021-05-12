@@ -86,5 +86,5 @@ QString RibbonSliderPlugin::domXml() const {
 }
 
 QString RibbonSliderPlugin::includeFile() const {
-    return QStringLiteral("Ribbon/RibbonSlider.h");
+    return QStringLiteral("<RibbonSlider>");
 }
