@@ -63,7 +63,11 @@ namespace Nedrysoft { namespace Ribbon {
             auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            //! @cond
+
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
+
+            //! @endcond
     };
 }}
 

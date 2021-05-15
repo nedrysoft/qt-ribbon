@@ -125,7 +125,11 @@ class RibbonSliderPlugin :
         void initialize(QDesignerFormEditorInterface *core) override;
 
     private:
-        bool m_initialized = false;                         //! holds whether designer has initialised the factory yet
+        //! @cond
+
+        bool m_initialized = false;
+
+        //! @endcond
 };
 
 #endif // NEDRYSOFT_RIBBONSLIDERPLUGIN_H

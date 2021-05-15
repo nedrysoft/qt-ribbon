@@ -56,7 +56,11 @@ class RibbonWidgetsCollection :
         QList<QDesignerCustomWidgetInterface*> customWidgets() const override;
 
     private:
-        QList<QDesignerCustomWidgetInterface*> m_widgets;           //! the list of provided widgets
+        //! @cond
+
+        QList<QDesignerCustomWidgetInterface*> m_widgets;
+
+        //! @endcond
 };
 
 #endif // NEDRYSOFT_RIBBONWIDGETSCOLLECTION_H

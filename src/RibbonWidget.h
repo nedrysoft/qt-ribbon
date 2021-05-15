@@ -105,17 +105,17 @@ namespace Nedrysoft { namespace Ribbon {
      */
 
 #if defined(Q_OS_MACOS)
-    static constexpr int TabBarHeight = 34;                                     //! Height of the tab bar portion of the control
-    static constexpr int DefaultFontSize = 12;                                  //! Default text size for macOS
+    static constexpr int TabBarHeight = 34;
+    static constexpr int DefaultFontSize = 12;
 #else
-    static constexpr int TabBarHeight = 28;                                     //! Height of the tab bar portion of the control
-    static constexpr int DefaultFontSize = 10;                                  //! Default text size for targets other than macOS
+    static constexpr int TabBarHeight = 28;
+    static constexpr int DefaultFontSize = 10;
 #endif
-    static constexpr int RibbonBarHeight = 100;                                 //! Height of the entire control
-    static constexpr int TabHighlightHeight = 3;                                //! Height of the highlight mark on the selected page
-    static constexpr int GroupDividerMargin = 2;                                //! Width of the group divider
+    static constexpr int RibbonBarHeight = 100;
+    static constexpr int TabHighlightHeight = 3;
+    static constexpr int GroupDividerMargin = 2;
 
-    static constexpr int RibbonBarDefaultWidth = 200;                           //! Default width of the control used by designer plugins
+    static constexpr int RibbonBarDefaultWidth = 200;
 
     /**
      * @brief       The RibbonWidget widget provides the main Ribbon container.
@@ -150,7 +150,11 @@ namespace Nedrysoft { namespace Ribbon {
             auto paintEvent(QPaintEvent *event) -> void override;
 
         private:
-            Nedrysoft::Ribbon::RibbonTabBar *m_tabBar;                                  //! The tab bar associated with this ribbon
+            //! @cond
+
+            Nedrysoft::Ribbon::RibbonTabBar *m_tabBar;
+
+            //! @endcond
     };
 }}
 

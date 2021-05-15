@@ -58,7 +58,7 @@ namespace Nedrysoft { namespace Ribbon {
             /**
              * @brief       Reimplements QWidget::setMinimumHeight(int minimumHeight)
              *
-             * @note        This hides the superclasses implemention as the ribbon line edit has a fixed height and
+             * @note        This hides the superclasses implementation as the ribbon line edit has a fixed height and
              *              we ignore any attempts to set it.
              *
              * @param[in]   minimumHeight the minimum height for the widget.
@@ -68,10 +68,10 @@ namespace Nedrysoft { namespace Ribbon {
             /**
              * @brief       Reimplements QWidget::setMaximumHeight(int maximumHeight)
              *
-             * @note        This hides the superclasses implemention as the ribbon line edit has a fixed height and
+             * @note        This hides the superclasses implementation as the ribbon line edit has a fixed height and
              *              we ignore any attempts to set it.
              *
-             * @param[in]   minimumHeight the maximum height for the widget.
+             * @param[in]   maximumHeight the maximum height for the widget.
              */
             void setMaximumHeight(int maximumHeight);
 
@@ -109,7 +109,7 @@ namespace Nedrysoft { namespace Ribbon {
              *
              * @note        Used to discard enter + return keys.
              *
-             * @param[in[   event the event information.
+             * @param[in]   event the event information.
              *
              * @returns     true if event handled; otherwise false.
              */
@@ -132,7 +132,11 @@ namespace Nedrysoft { namespace Ribbon {
             auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;                 //! theme support instance
+            //! @cond
+
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
+
+            //! @endcond
     };
 }}
 

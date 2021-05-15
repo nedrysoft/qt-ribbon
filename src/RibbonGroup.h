@@ -52,7 +52,11 @@ namespace Nedrysoft { namespace Ribbon {
         private:
             Q_OBJECT
 
+            //! @cond
+
             Q_PROPERTY(QString groupName READ groupName WRITE setGroupName)
+
+            //! @endcond
 
         public:
             /**
@@ -97,10 +101,14 @@ namespace Nedrysoft { namespace Ribbon {
             auto event(QEvent *event) -> bool override;
 
         private:
-            QString m_groupName;                                    //! Group name that is displayed
-            QFont m_font;                                           //! Font used to draw the group name
-            QFontMetrics m_fontMetrics;                             //! The font metrics of the selected font
-            QRect m_textRect;                                       //! The rectangle of the group name in the selected font
+            //! @cond
+
+            QString m_groupName;
+            QFont m_font;
+            QFontMetrics m_fontMetrics;
+            QRect m_textRect;
+
+            //! @endcond
     };
 }}
 

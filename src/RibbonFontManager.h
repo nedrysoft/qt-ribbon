@@ -79,8 +79,12 @@ namespace Nedrysoft { namespace Ribbon {
             auto boldFont() -> QString const;
 
         private:
-            int m_regularFontId;                                                //! Regular font id after loading
-            int m_boldFontId;                                                   //! Bold font id after loading
+            //! @cond
+
+            int m_regularFontId;
+            int m_boldFontId;
+
+            //! @endcond
     };
 }}
 

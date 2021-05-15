@@ -50,8 +50,12 @@ namespace Nedrysoft { namespace Ribbon {
         private:
             Q_OBJECT
 
+            //! @cond
+
             Q_PROPERTY(QIcon icon READ icon WRITE setIcon)
             Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)
+
+            //! @endcond
 
         public:
             /**
@@ -116,11 +120,15 @@ namespace Nedrysoft { namespace Ribbon {
             Q_SIGNAL void clicked(bool dropdown);
 
         private:
-            QVBoxLayout *m_layout;                              //! the layout for this widget
-            QPushButton *m_mainButton;                          //! the main button
-            QPushButton *m_dropButton;                          //! the drop down button
-            QSize m_iconSize;                                   //! the size of the icon
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! theme support instance
+            //! @cond
+
+            QVBoxLayout *m_layout;
+            QPushButton *m_mainButton;
+            QPushButton *m_dropButton;
+            QSize m_iconSize;
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
+
+            //! @endcond
     };
 }}
 

@@ -94,11 +94,15 @@ namespace Nedrysoft { namespace Ribbon {
             auto updateStyleSheet(bool isDarkMode) -> void;
 
         private:
-            QFont m_selectedFont;                                   //! font to use on selected tab
-            QFont m_normalFont;                                     //! font to use on deselected tabs
-            bool m_mouseInWidget;                                   //! tracks whether the mouse is tracked inside the widget
+            //! @cond
 
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;         //! theme support instance
+            QFont m_selectedFont;
+            QFont m_normalFont;
+            bool m_mouseInWidget;
+
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
+
+            //! @endcond
     };
 }}
 

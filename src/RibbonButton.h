@@ -73,8 +73,11 @@ namespace Nedrysoft { namespace Ribbon {
             auto updateStyleSheets(bool isDarkMode) -> void;
 
         private:
-            std::shared_ptr<RibbonButtonData> d;
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            //! @cond
+
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
+
+            //! @endcond
     };
 }}
 

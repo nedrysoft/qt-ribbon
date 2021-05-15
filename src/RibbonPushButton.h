@@ -48,9 +48,13 @@ namespace Nedrysoft { namespace Ribbon {
         private:
             Q_OBJECT
 
+            //! @cond
+
             Q_PROPERTY(QIcon icon READ icon WRITE setIcon)
             Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)
             Q_PROPERTY(QString text READ text WRITE setText)
+
+            //! @endcond
 
         public:
             /**
@@ -139,11 +143,15 @@ namespace Nedrysoft { namespace Ribbon {
             auto eventFilter(QObject *object, QEvent *event) -> bool override;
 
         private:
-            QVBoxLayout *m_layout;                              //! the layout for this widget
-            QPushButton *m_mainButton;                          //! the main button
-            QLabel *m_buttonLabel;                              //! the main button label
-            QSize m_iconSize;                                   //! the size of the icon
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;     //! an instance of theme support
+            //! @cond
+
+            QVBoxLayout *m_layout;
+            QPushButton *m_mainButton;
+            QLabel *m_buttonLabel;
+            QSize m_iconSize;
+            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
+
+            //! @endcond
     };
 }}
 

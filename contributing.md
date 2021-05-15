@@ -2,7 +2,7 @@
 
 The following document contains a set of guidelines for contributing to the project.  Any pull-requests should be compliant with this guide.  Code style is often fluent, if you have a suggestion which you think will improve the readability of the code then please open an issue so that we can discuss that potentially modify the style guide to accommodate any new changes.
 
-#C++ Style Guide
+# C++ Style Guide
 
 The following guide should be followed to ensure consistent code throughout the project.
 
