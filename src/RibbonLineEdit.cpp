@@ -81,6 +81,7 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
 
     QTextEdit::setSizePolicy(sizePolicy().horizontalPolicy(), QSizePolicy::Fixed);
 
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12,0))
     QPalette palette = QTextEdit::palette();
 
     if (m_themeSupport->isDarkMode()) {
@@ -90,6 +91,7 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
     }
 
     setPalette(palette);
+#endif
 
 }
 
