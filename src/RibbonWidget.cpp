@@ -34,6 +34,10 @@ constexpr auto ThemeStylesheet = R"(
         font-family: "Open Sans";
         font-size: 10pt;
     }
+
+    QPushButton {
+        border-radius: none;
+    }
 )";
 
 Nedrysoft::Ribbon::RibbonWidget::RibbonWidget(QWidget *parent) :
