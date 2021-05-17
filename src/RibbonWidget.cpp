@@ -74,3 +74,13 @@ auto Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) -> void {
 
     painter.restore();
 }
+
+auto Nedrysoft::Ribbon::RibbonWidget::backgroundColor() -> QColor {
+    auto currentTheme = Nedrysoft::Ribbon::Light;
+
+    if (Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode()) {
+        currentTheme = Nedrysoft::Ribbon::Dark;
+    }
+
+    return TabBarBackgroundColor[currentTheme];
+}

@@ -138,6 +138,13 @@ namespace Nedrysoft { namespace Ribbon {
              */
             explicit RibbonWidget(QWidget *parent = nullptr);
 
+            /**
+             * @brief       Returns the ribbon bar background color.
+             *
+             * @returns     the colour.
+             */
+            auto backgroundColor() -> QColor;
+
             friend class RibbonTabBar;
             friend class RibbonGroup;
 

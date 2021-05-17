@@ -33,6 +33,7 @@ constexpr auto ThemeStylesheet = R"(
         border: 0px;
         padding: 3px;
         background: [normal-background-colour];
+        border-radius: none;
     }
 
     QPushButton::hover {

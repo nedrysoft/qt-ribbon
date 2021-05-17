@@ -35,6 +35,7 @@ constexpr auto ThemeStylesheet = R"(
         border: 0px none;
         background: [background-colour];
         margin: 0px;
+        border-radius: none;
     }
 
     QToolButton::hover {
