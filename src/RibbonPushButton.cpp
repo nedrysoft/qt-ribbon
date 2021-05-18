@@ -29,8 +29,6 @@
 #include <QApplication>
 #include <QStyle>
 
-#include <QDebug>
-
 constexpr auto ThemeStylesheet = R"(
     QPushButton {
         border: 0px;

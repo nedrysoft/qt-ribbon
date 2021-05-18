@@ -28,8 +28,6 @@
 #include <QApplication>
 #include <QStyle>
 
-#include <QDebug>
-
 constexpr auto ThemeStylesheet = R"(
     QToolButton {
         border: 0px none;

@@ -26,7 +26,6 @@
 #include "RibbonWidget.h"
 
 #include <QApplication>
-#include <QDebug>
 
 constexpr auto ThemeStylesheet = R"(
     QPushButton {
