@@ -100,8 +100,6 @@ namespace Nedrysoft { namespace Ribbon {
             QFont m_normalFont;
             bool m_mouseInWidget;
 
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
-
             //! @endcond
     };
 }}

@@ -71,13 +71,6 @@ namespace Nedrysoft { namespace Ribbon {
              * @param[in]   isDarkMode true if dark mode; otherwise false.
              */
             auto updateStyleSheets(bool isDarkMode) -> void;
-
-        private:
-            //! @cond
-
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
-
-            //! @endcond
     };
 }}
 

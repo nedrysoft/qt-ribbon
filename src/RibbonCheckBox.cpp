@@ -62,20 +62,21 @@ constexpr auto ThemeStylesheet = R"(
 )";
 
 Nedrysoft::Ribbon::RibbonCheckBox::RibbonCheckBox(QWidget *parent) :
-        QCheckBox(parent),
-        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
+        QCheckBox(parent) {
 
     setAttribute(Qt::WA_MacShowFocusRect,false);
 
-    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    connect(themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
     });
 
-    updateStyleSheet(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
+    updateStyleSheet(themeSupport->isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonCheckBox::~RibbonCheckBox() {
-    delete m_themeSupport;
+
 }
 
 auto Nedrysoft::Ribbon::RibbonCheckBox::updateStyleSheet(bool isDarkMode) -> void {

@@ -47,12 +47,13 @@ constexpr auto ThemeStylesheet = R"(
 
 Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
         QWidget(parent),
-        m_iconSize(QSize(RibbonDropButtonDefaultIconWidth,RibbonDropButtonDefaultIconHeight)),
-        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
+        m_iconSize(QSize(RibbonDropButtonDefaultIconWidth,RibbonDropButtonDefaultIconHeight)) {
 
     m_layout = new QVBoxLayout;
     m_mainButton = new QPushButton;
     m_dropButton = new QPushButton;
+
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
 
     m_mainButton->installEventFilter(this);
 
@@ -86,11 +87,11 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
 
     updateSizes();
 
-    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    connect(themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheets(isDarkMode);
     });
 
-    updateStyleSheets(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
+    updateStyleSheets(themeSupport->isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonDropButton::~RibbonDropButton() {
@@ -104,10 +105,6 @@ Nedrysoft::Ribbon::RibbonDropButton::~RibbonDropButton() {
 
     if (m_layout) {
         delete m_layout;
-    }
-
-    if (m_themeSupport) {
-        delete m_themeSupport;
     }
 }
 

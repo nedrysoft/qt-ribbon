@@ -45,8 +45,7 @@ constexpr auto ThemeStylesheet = R"(
 
 Nedrysoft::Ribbon::RibbonPushButton::RibbonPushButton(QWidget *parent) :
         QWidget(parent),
-        m_iconSize(QSize(RibbonPushButtonDefaultIconWidth, RibbonPushButtonDefaultIconHeight)),
-        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
+        m_iconSize(QSize(RibbonPushButtonDefaultIconWidth, RibbonPushButtonDefaultIconHeight)) {
 
     m_layout = new QVBoxLayout;
     m_mainButton = new QPushButton;
@@ -80,13 +79,15 @@ Nedrysoft::Ribbon::RibbonPushButton::RibbonPushButton(QWidget *parent) :
         Q_EMIT clicked();
     });
 
-    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    connect(themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheets(isDarkMode);
     });
 
     updateSizes();
 
-    updateStyleSheets(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
+    updateStyleSheets(themeSupport->isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonPushButton::~RibbonPushButton() {
@@ -134,7 +135,9 @@ auto Nedrysoft::Ribbon::RibbonPushButton::updateStyleSheets(bool isDarkMode) -> 
 
     QString styleSheet(ThemeStylesheet);
 
-    styleSheet.replace("[background-colour]", Nedrysoft::ThemeSupport::ThemeSupport::getColor(Nedrysoft::Ribbon::PushButtonColor).name());
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    styleSheet.replace("[background-colour]", themeSupport->getColor(Nedrysoft::Ribbon::PushButtonColor).name());
 
     m_mainButton->setStyleSheet(styleSheet);
     m_buttonLabel->setStyleSheet(styleSheet);
@@ -150,7 +153,9 @@ auto Nedrysoft::Ribbon::RibbonPushButton::eventFilter(QObject *object, QEvent *e
 
         m_mainButton->setStyleSheet(styleSheet);
     } else if (event->type()==QEvent::MouseButtonRelease) {
-        updateStyleSheets(m_themeSupport->isDarkMode());
+        auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+        updateStyleSheets(themeSupport->isDarkMode());
     }
 
     return false;

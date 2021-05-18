@@ -47,16 +47,17 @@ constexpr auto ThemeStylesheet = R"(
 )";
 
 Nedrysoft::Ribbon::RibbonSlider::RibbonSlider(QWidget *parent) :
-        QSlider(parent),
-        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
+        QSlider(parent) {
 
     setAttribute(Qt::WA_MacShowFocusRect,false);
 
-    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    connect(themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
     });
 
-    updateStyleSheet(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
+    updateStyleSheet(themeSupport->isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonSlider::~RibbonSlider() {

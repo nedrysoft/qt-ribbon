@@ -126,7 +126,6 @@ namespace Nedrysoft { namespace Ribbon {
             QPushButton *m_mainButton;
             QPushButton *m_dropButton;
             QSize m_iconSize;
-            Nedrysoft::ThemeSupport::ThemeSupport *m_themeSupport;
 
             //! @endcond
     };

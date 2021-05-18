@@ -60,7 +60,9 @@ auto Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) -> void {
     auto widgetRect = rect();
     auto currentTheme = Nedrysoft::Ribbon::Light;
 
-    if (Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode()) {
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    if (themeSupport->isDarkMode()) {
         currentTheme = Nedrysoft::Ribbon::Dark;
     }
 
@@ -78,7 +80,9 @@ auto Nedrysoft::Ribbon::RibbonWidget::paintEvent(QPaintEvent *event) -> void {
 auto Nedrysoft::Ribbon::RibbonWidget::backgroundColor() -> QColor {
     auto currentTheme = Nedrysoft::Ribbon::Light;
 
-    if (Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode()) {
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    if (themeSupport->isDarkMode()) {
         currentTheme = Nedrysoft::Ribbon::Dark;
     }
 

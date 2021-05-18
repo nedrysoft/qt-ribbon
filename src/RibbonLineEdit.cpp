@@ -46,12 +46,13 @@ constexpr auto ThemeStylesheet = R"(
 constexpr auto WidgetHeight = 21;
 
 Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
-        QTextEdit(parent),
-        m_themeSupport(new Nedrysoft::ThemeSupport::ThemeSupport) {
+        QTextEdit(parent) {
 
     setAttribute(Qt::WA_MacShowFocusRect,false);
 
-    connect(m_themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
+    auto themeSupport = Nedrysoft::ThemeSupport::ThemeSupport::getInstance();
+
+    connect(themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheet(isDarkMode);
     });
 
@@ -66,7 +67,7 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
 #endif
     });
 
-    updateStyleSheet(Nedrysoft::ThemeSupport::ThemeSupport::isDarkMode());
+    updateStyleSheet(themeSupport->isDarkMode());
 
     setLineWrapMode(QTextEdit::NoWrap);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -84,7 +85,7 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 12,0))
     QPalette palette = QTextEdit::palette();
 
-    if (m_themeSupport->isDarkMode()) {
+    if (themeSupport->isDarkMode()) {
         palette.setColor(QPalette::PlaceholderText, QColor(Qt::darkGray).lighter(125));
     } else {
         palette.setColor(QPalette::PlaceholderText, Qt::darkGray);
@@ -148,13 +149,12 @@ auto Nedrysoft::Ribbon::RibbonLineEdit::event(QEvent *e) -> bool {
 }
 
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
-    if (m_themeSupport) {
-        delete m_themeSupport;
-    }
 }
-
+#include <QDebug>
 auto Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
+
+    qDebug() << "Updating RibbonLineEdit" << isDarkMode;
 
     styleSheet.replace("[border]", "border: 0px none");
 
