@@ -150,11 +150,9 @@ auto Nedrysoft::Ribbon::RibbonLineEdit::event(QEvent *e) -> bool {
 
 Nedrysoft::Ribbon::RibbonLineEdit::~RibbonLineEdit() {
 }
-#include <QDebug>
+
 auto Nedrysoft::Ribbon::RibbonLineEdit::updateStyleSheet(bool isDarkMode) -> void {
     QString styleSheet(ThemeStylesheet);
-
-    qDebug() << "Updating RibbonLineEdit" << isDarkMode;
 
     styleSheet.replace("[border]", "border: 0px none");
 
