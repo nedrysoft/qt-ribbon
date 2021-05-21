@@ -93,7 +93,6 @@ Nedrysoft::Ribbon::RibbonLineEdit::RibbonLineEdit(QWidget *parent) :
 
     setPalette(palette);
 #endif
-
 }
 
 void Nedrysoft::Ribbon::RibbonLineEdit::setMinimumHeight(int minimumHeight) {

@@ -63,7 +63,7 @@ Nedrysoft::Ribbon::RibbonComboBox::RibbonComboBox(QWidget *parent) :
         updateStyleSheet(isDarkMode);
     });
 
-    updateStyleSheet(themeSupport);
+    updateStyleSheet(themeSupport->isDarkMode());
 }
 
 Nedrysoft::Ribbon::RibbonComboBox::~RibbonComboBox() {
