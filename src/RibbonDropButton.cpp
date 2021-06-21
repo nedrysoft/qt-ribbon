@@ -26,11 +26,13 @@
 #include "RibbonWidget.h"
 
 #include <QApplication>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 constexpr auto ThemeStylesheet = R"(
     QPushButton {
         border: 0px;
-        padding: 3px;
+        padding-right: 3px;
         background: [normal-background-colour];
         border-radius: none;
     }
@@ -46,9 +48,10 @@ constexpr auto ThemeStylesheet = R"(
 
 Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
         QWidget(parent),
-        m_iconSize(QSize(RibbonDropButtonDefaultIconWidth,RibbonDropButtonDefaultIconHeight)) {
+        m_iconSize(QSize(RibbonDropButtonDefaultIconWidth,RibbonDropButtonDefaultIconHeight)),
+        m_vertical(true),
+        m_layout(nullptr) {
 
-    m_layout = new QVBoxLayout;
     m_mainButton = new QPushButton;
     m_dropButton = new QPushButton;
 
@@ -56,15 +59,8 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
 
     m_mainButton->installEventFilter(this);
 
-    m_layout->addWidget(m_mainButton);
-    m_layout->addWidget(m_dropButton);
-    m_layout->addSpacerItem(new QSpacerItem(0,0, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
-
-    m_layout->setContentsMargins(0,0,0,0);
-    m_layout->setSpacing(0);
-
-    m_dropButton->setMinimumHeight(RibbonDropButtonDefaultHeight);
-    m_dropButton->setMaximumHeight(RibbonDropButtonDefaultHeight);
+    m_dropButton->setMinimumHeight(RibbonDropButtonDefaultVerticalHeight);
+    m_dropButton->setMaximumHeight(RibbonDropButtonDefaultVerticalHeight);
 
     m_mainButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     m_dropButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
@@ -73,8 +69,6 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
 
     m_dropButton->setFlat(true);
     m_mainButton->setFlat(true);
-
-    setLayout(m_layout);
 
     connect(m_mainButton, &QPushButton::clicked, [=] (bool checked) {
         Q_EMIT clicked(false);
@@ -89,6 +83,8 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
     connect(themeSupport, &Nedrysoft::ThemeSupport::ThemeSupport::themeChanged, [=](bool isDarkMode) {
         updateStyleSheets(isDarkMode);
     });
+
+    updateLayout();
 
     updateStyleSheets(themeSupport->isDarkMode());
 }
@@ -159,4 +155,69 @@ void Nedrysoft::Ribbon::RibbonDropButton::updateStyleSheets(bool isDarkMode) {
     } else {
         m_dropButton->setIcon(QIcon(":/Nedrysoft/Ribbon/icons/arrow-drop-light@2x.png"));
     }
+}
+
+auto Nedrysoft::Ribbon::RibbonDropButton::updateLayout() -> void {
+    QBoxLayout *layout;
+    QSpacerItem *spacerItem=nullptr;
+
+    if (m_vertical) {
+        layout = new QVBoxLayout;
+        spacerItem = new QSpacerItem(0,0, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+
+        m_dropButton->setMinimumHeight(RibbonDropButtonDefaultVerticalHeight);
+        m_dropButton->setMaximumHeight(RibbonDropButtonDefaultVerticalHeight);
+
+    } else {
+        layout = new QHBoxLayout;
+
+        m_dropButton->setMinimumHeight(RibbonDropButtonDefaultHorizontalHeight);
+        m_dropButton->setMaximumHeight(RibbonDropButtonDefaultHorizontalHeight);
+    }
+
+    layout->addWidget(m_mainButton);
+    layout->addWidget(m_dropButton);
+
+    if (spacerItem) {
+        layout->addSpacerItem(spacerItem);
+    }
+
+    layout->setContentsMargins(0,0,0,0);
+    layout->setSpacing(0);
+
+    if (m_layout) {
+        delete m_layout;
+    }
+
+    m_layout = layout;
+
+    setLayout(m_layout);
+}
+
+auto Nedrysoft::Ribbon::RibbonDropButton::vertical() -> bool {
+    return m_vertical;
+}
+
+auto Nedrysoft::Ribbon::RibbonDropButton::setVertical(const bool vertical) -> void {
+    m_vertical = vertical;
+
+    updateLayout();
+}
+
+auto Nedrysoft::Ribbon::RibbonDropButton::text() -> QString {
+    return m_text;
+}
+
+auto Nedrysoft::Ribbon::RibbonDropButton::setText(const QString &text) -> void {
+    QString padding;
+
+    m_text = text;
+
+    if (!m_vertical) {
+        for (int i=0;i<3;i++) {
+            padding += QLatin1Char(0x00A0);
+        }
+    }
+
+    m_mainButton->setText(padding+m_text);
 }

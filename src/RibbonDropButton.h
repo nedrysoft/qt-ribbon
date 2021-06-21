@@ -27,14 +27,15 @@
 #include "RibbonSpec.h"
 
 #include <QPushButton>
-#include <QVBoxLayout>
+#include <QBoxLayout>
 #include <QWidget>
 #include <ThemeSupport>
 
 namespace Nedrysoft { namespace Ribbon {
     constexpr auto RibbonDropButtonDefaultIconWidth = 32;
     constexpr auto RibbonDropButtonDefaultIconHeight = 48;
-    constexpr auto RibbonDropButtonDefaultHeight = 16;
+    constexpr auto RibbonDropButtonDefaultVerticalHeight = 16;
+    constexpr auto RibbonDropButtonDefaultHorizontalHeight = 20;
     constexpr auto RibbonDropButtonArrowWidth = 5;
     constexpr auto RibbonDropButtonArrowHeight = 5;
 
@@ -54,6 +55,8 @@ namespace Nedrysoft { namespace Ribbon {
 
             Q_PROPERTY(QIcon icon READ icon WRITE setIcon)
             Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)
+            Q_PROPERTY(bool vertical READ vertical WRITE setVertical)
+            Q_PROPERTY(QString text READ text WRITE setText)
 
             //! @endcond
 
@@ -98,6 +101,34 @@ namespace Nedrysoft { namespace Ribbon {
              */
             auto setIconSize(QSize iconSize) -> void;
 
+            /**
+             * @brief       Returns whether the layout is vertical.
+             *
+             * @returns     true if vertical; otherwise false.
+             */
+            auto vertical() -> bool;
+
+            /**
+             * @brief       Sets whether the layout is vertical.
+             *
+             * @param[in]   vertical true if vertical;otherwise false.
+             */
+            auto setVertical(const bool vertical) -> void;
+
+            /**
+             * @brief       Returns the icon that is currently assigned to the main button.
+             *
+             * @returns     the icon assigned to the main button.
+             */
+            auto text() -> QString;
+
+            /**
+             * @brief       Sets the text to be displayed on the main button.
+             *
+             * @param[in]   icon the text to be displayed on the main button.
+             */
+            auto setText(const QString &text) -> void;
+
         private:
             /**
              * @brief       Updates the child widgets when the size of the icon is changed.
@@ -111,6 +142,11 @@ namespace Nedrysoft { namespace Ribbon {
               */
             auto updateStyleSheets(bool isDarkMode) -> void;
 
+            /**
+             * @brief       Updates the widgets layout when the vertical property has been changed.
+             */
+            auto updateLayout() -> void;
+
         public:
             /**
              * @brief       This signal is emitted when the either the main or drop-down button has been clicked.
@@ -122,10 +158,12 @@ namespace Nedrysoft { namespace Ribbon {
         private:
             //! @cond
 
-            QVBoxLayout *m_layout;
+            QBoxLayout *m_layout;
             QPushButton *m_mainButton;
             QPushButton *m_dropButton;
             QSize m_iconSize;
+            bool m_vertical;
+            QString m_text;
 
             //! @endcond
     };
