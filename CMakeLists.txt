@@ -146,7 +146,7 @@ if(NEDRYSOFT_RIBBON_BUILD_DESIGNER_PLUGIN)
 
     add_definitions(-DNEDRYSOFT_RIBBON_DESIGNER_EXPORT)
 
-    find_package(Qt5 COMPONENTS Widgets UiPlugin REQUIRED)
+    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets UiPlugin REQUIRED)
 
     add_library(${PROJECT_NAME} SHARED
         ${library_SOURCES}
