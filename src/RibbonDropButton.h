@@ -24,6 +24,7 @@
 #ifndef NEDRYSOFT_RIBBONDROPBUTTON_H
 #define NEDRYSOFT_RIBBONDROPBUTTON_H
 
+#include "RibbonAction.h"
 #include "RibbonSpec.h"
 
 #include <QPushButton>
@@ -129,6 +130,16 @@ namespace Nedrysoft { namespace Ribbon {
              */
             auto setText(const QString &text) -> void;
 
+            /**
+             * @brief       Sets the ribbon action for this widget.
+             *
+             * @note        In addition to emitting the clicked signal, this widget will also trigger this
+             *              action.
+             *
+             * @param[in]   action the action to associate with this button.
+             */
+            void setAction(Nedrysoft::Ribbon::RibbonAction *action);
+
         private:
             /**
              * @brief       Updates the child widgets when the size of the icon is changed.
@@ -155,6 +166,13 @@ namespace Nedrysoft { namespace Ribbon {
              */
             Q_SIGNAL void clicked(bool dropdown);
 
+            /**
+             * @brief       Emitted when an event occurs on the owner widget.
+             *
+             * @param[in]   event contains information about the event.
+             */
+            Q_SIGNAL void ribbonEvent(const Nedrysoft::Ribbon::Event &event);
+
         private:
             //! @cond
 
@@ -164,6 +182,7 @@ namespace Nedrysoft { namespace Ribbon {
             QSize m_iconSize;
             bool m_vertical;
             QString m_text;
+            RibbonAction *m_action;
 
             //! @endcond
     };

@@ -50,7 +50,8 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
         QWidget(parent),
         m_iconSize(QSize(RibbonDropButtonDefaultIconWidth,RibbonDropButtonDefaultIconHeight)),
         m_vertical(true),
-        m_layout(nullptr) {
+        m_layout(nullptr),
+        m_action(nullptr) {
 
     m_mainButton = new QPushButton;
     m_dropButton = new QPushButton;
@@ -71,10 +72,26 @@ Nedrysoft::Ribbon::RibbonDropButton::RibbonDropButton(QWidget *parent) :
     m_mainButton->setFlat(true);
 
     connect(m_mainButton, &QPushButton::clicked, [=] (bool checked) {
+        if (m_action) {
+            auto dropButtonEvent = new Nedrysoft::Ribbon::DropButtonClickedEvent(this, false);
+
+            m_action->triggerEvent(dropButtonEvent);
+
+            delete dropButtonEvent;
+        }
+
         Q_EMIT clicked(false);
     });
 
     connect(m_dropButton, &QPushButton::clicked, [=] (bool checked) {
+        if (m_action) {
+            auto dropButtonEvent = new Nedrysoft::Ribbon::DropButtonClickedEvent(this, true);
+
+            m_action->triggerEvent(dropButtonEvent);
+
+            delete dropButtonEvent;
+        }
+
         Q_EMIT clicked(true);
     });
 
@@ -220,4 +237,8 @@ auto Nedrysoft::Ribbon::RibbonDropButton::setText(const QString &text) -> void {
     }
 
     m_mainButton->setText(padding+m_text);
+}
+
+auto Nedrysoft::Ribbon::RibbonDropButton::setAction(Nedrysoft::Ribbon::RibbonAction *action) -> void {
+    m_action = action;
 }
