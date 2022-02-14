@@ -41,6 +41,7 @@ ADD_DEFINITIONS(-DNEDRYSOFT_LIBRARY_RIBBON_EXPORT)
 project(Ribbon)
 
 set(library_SOURCES
+    src/RibbonAction.h
     src/RibbonButton.cpp
     src/RibbonButton.h
     src/RibbonCheckBox.cpp
