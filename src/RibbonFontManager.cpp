@@ -24,6 +24,7 @@
 #include "RibbonFontManager.h"
 
 #include <QFontDatabase>
+#include <QList>
 
 Nedrysoft::Ribbon::RibbonFontManager::RibbonFontManager() :
         m_regularFontId(QFontDatabase::addApplicationFont(":/Nedrysoft/Ribbon/OpenSans/OpenSans-Regular.ttf")),
